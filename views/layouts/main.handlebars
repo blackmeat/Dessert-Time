@@ -12,14 +12,15 @@
 </head>
 
 <body>
-  <header>
-    <div id="logo">
-      <img src="./images/logo.png" width="210px" height="100px" alt="LOGO">
-    </div>
-    <hr>
-  </header>
+
   <div class="container">
     <div class="container">
+      <header>
+        <div id="logo">
+          <img src="./images/logo.png" width="210px" height="100px" alt="LOGO">
+        </div>
+        <hr>
+      </header>
       <main>
         {{#if success_messages}}
         <div class="alert alert-success" role="alert" style="margin: 30px 0 ;">
@@ -33,19 +34,20 @@
         {{/if}}
         {{{body}}}
       </main>
+      <footer>
+        <hr>
+        <br>
+        <div style="text-align: center;">
+          <h5>追蹤我們</h5>
+          <i class="fa fa-facebook-square mx-2" aria-hidden="true"></i>
+          <i class="fa fa-instagram mx-2" aria-hidden="true"></i>
+          <i class="fa fa-youtube-play mx-2" aria-hidden="true"></i>
+          <i class="fa fa-twitter mx-2" aria-hidden="true"></i>
+        </div>
+      </footer>
     </div>
   </div>
-  <footer>
-    <hr>
-    <br>
-    <div style="text-align: center;">
-      <h5>追蹤我們</h5>
-      <i class="fa fa-facebook-square mx-2" aria-hidden="true"></i>
-      <i class="fa fa-instagram mx-2" aria-hidden="true"></i>
-      <i class="fa fa-youtube-play mx-2" aria-hidden="true"></i>
-      <i class="fa fa-twitter mx-2" aria-hidden="true"></i>
-    </div>
-  </footer>
+
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>

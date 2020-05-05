@@ -7,8 +7,39 @@ img#slogan {
 img#earth {
   filter:contrast(1.2)
 }
+img.subscribe {
+  width: 30%;
+  margin:auto
+}
 div#logo {
   text-align: center;
+}
+div.card {
+  width: 20%;
+  margin:0 auto 0 auto;
+  border:none;
+  background-color:transparent;
+  text-align:center
+}
+div#choose {
+  text-align: center;
+}
+div#體驗一箱 {
+  color:orange
+}
+div#超值箱 {
+  color:rgb(111, 196, 245)
+}
+div#饗樂箱 {
+  color:rgb(241, 93, 93)
+}
+div#派對箱 {
+  color:rgb(50, 65, 148)
+}
+a#choose_button {
+ background-color:rgb(241, 175, 52);
+ color:white;
+ padding:10px 30px 0 30px
 }
 a.btn-order {
   font-size:22px;
@@ -26,4 +57,14 @@ hr {
 }
 body {
   background-color:snow
+}
+h1 {
+  font-weight: normal;
+  text-align: center;
+}
+h5 {
+  color:black
+}
+p#price {
+  font-size: 20px;
 }

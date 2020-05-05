@@ -1,5 +1,7 @@
 const express = require("express")
-const exhbs = require("express-handlebars")
+const Handlebars = require('handlebars')
+const exhbs = require('express-handlebars');
+const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
 const passport = require("./config/passport")
 const bodyParser = require("body-parser")
 const session = require("express-session")
@@ -9,7 +11,8 @@ const port = 3000
 
 app.engine("handlebars", exhbs({
   defaultLayout: "main",
-  helpers: require("./config/handlebars-helper.js")
+  helpers: require("./config/handlebars-helper.js"),
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
 }))
 app.set("view engine", "handlebars")
 

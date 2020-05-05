@@ -1,0 +1,31 @@
+<div>
+  <h1 class="my-5" style="text-align: center;">如何開始訂閱？</h1>
+  <div class="row">
+    <img class="subscribe" src="https://snacklips.com/wp-content/uploads/2019/09/landingpage_如何訂閱-01.png" alt="">
+    <img class="subscribe" src="https://snacklips.com/wp-content/uploads/2019/09/landingpage_如何訂閱-02.png" alt="">
+    <img class="subscribe" src="https://snacklips.com/wp-content/uploads/2019/09/landingpage_如何訂閱-03.png" alt="">
+  </div>
+</div>
+<div>
+  <h1 class="my-5">選擇適合的方案</h1>
+  <div class="row">
+    {{#each products}}
+    <div class="card">
+      <img class="card-img-top" src="{{this.image}}" width="200px" height="200px" alt="產品圖片">
+      <div class="card-body" id="{{this.name}}">
+        <h1>{{this.name}}</h1>
+        <small>{{this.english_name}}</small>
+        <p id="price">NT${{this.price}}/每月</p>
+        <h5>{{textSub_a this.descritption}}</h5><br>
+        <h5>{{textSub_b this.descritption}}</h5><br>
+        <h5>{{textSub_c this.descritption}}</h5>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+<div class="my-4" id="choose">
+  <a class="btn rounded-pill" id="choose_button" href="/">
+    <h3>前往選擇方案 →</h3>
+  </a>
+</div>
