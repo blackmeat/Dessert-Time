@@ -23,7 +23,6 @@ const userController = {
               name: req.body.name,
               email: req.body.email,
               password: bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10), null),
-              avatar: "https://image.damanwoo.com/files/styles/rs-medium/public/flickr/3/2315/5820745122_acf40696e7_o.jpg"
             }).then(user => {
               req.flash("success_messages", "成功註冊！！")
               return res.redirect('/signin')
@@ -40,14 +39,13 @@ const userController = {
   signIn: (req, res) => {
     // console.log(req.headers)
     req.flash("success_messages", "成功登入")
-
-    res.redirect("/tweets")
+    res.redirect("/home")
   },
 
   logout: (req, res) => {
     req.flash("success_messages", "已經成功登出")
     req.logout()
-    res.redirect("/signin")
+    res.redirect("/home")
   },
 }
 
