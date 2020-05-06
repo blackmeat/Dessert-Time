@@ -4,12 +4,21 @@ const productController = require("../controllers/productController")
 
 
 module.exports = (app) => {
-  app.get("/", (req, res) => {
-    res.redirect("/home")
-  })
-  app.get("/home", (req, res) => {
-    res.render("home")
-  })
+  const authenticated = (req, res, next) => {
+    if (req.isAuthenticated()) {
+      return next()
+    }
+    res.redirect('/signin')
+  }
+  const authenticatedAdmin = (req, res, next) => {
+    if (req.isAuthenticated()) {
+      if (req.user.role === true) { return next() }
+      return res.redirect('/')
+    }
+    res.redirect('/signin')
+  }
+  app.get("/", (req, res) => { res.redirect("/home") })
+  app.get("/home", (req, res) => { res.render("home") })
   // Login
   app.get("/signup", userController.signUpPage)
   app.post("/signup", userController.signUp)
