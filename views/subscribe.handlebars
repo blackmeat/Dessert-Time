@@ -1,0 +1,70 @@
+{{!-- 步驟圖 --}}
+<div id="step">
+  <div class="row col-12 mt-5 mb-4">
+    <button id="step-now" class="btn btn-primary" disabled>
+      <small>Step 1</small><br>選擇方案
+    </button>
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 2</small><br>登入帳號
+    </button>
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 3</small><br>收件資訊
+    </button>
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 4</small><br>完成結帳
+    </button>
+  </div>
+  <h1 id="title" class="mt-5 mb-4">選擇適合您的方案</h1>
+  <h4 id="explain">現在下訂將於6/8當週開始出貨，訂閱制零食箱會於之後每月第二週出貨</h4>
+</div>
+{{!-- 方案選項 --}}
+<div id="option" class="row">
+  {{#each products}}
+  <a class="btn" id="option" href="?productId={{this.id}}"
+    {{#ifCond ../productId this.id}}style="filter:brightness(0.95)" {{/ifCond}}>
+    <div class="card-header">
+      <h5 id="option_title">{{this.name}}</h5>
+      <small>{{this.english_name}}</small>
+    </div>
+    <div class="card-body">
+      <br>
+      <br>
+      <h2>{{this.price}}元/月</h2>
+      <small id="{{name}}">每月自動扣款NT$ {{this.price}} 元</small>
+      <br>
+      {{#ifCond ../productId this.id}}
+      <i class="fa fa-check-circle"></i>
+      {{/ifCond}}
+    </div>
+  </a>
+  {{/each}}
+</div>
+{{!-- 訂購按鍵 --}}
+<div class="mt-5" style="text-align: center;">
+  <a class="btn mb-2 back" href="/products">
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>
+    上一步
+    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+  </a>
+  <br>
+  <form action="/cart" method="POST">
+    <input type="hidden" name="productId" value="{{productId}}">
+    <button type="submit" class="btn btn-primary rounded-pill" id="buy">立即訂購</button>
+  </form>
+</div>
+
+
+<script>
+  /*
+  function option() {
+    let parent = document.querySelector("#card_body")
+    let i = document.createElement("i")
+    if (!document.querySelector(".fa-check-circle")) {
+      i.setAttribute("class", "fa fa-check-circle")
+      parent.appendChild(i)
+    } else {
+      parent.removeChild(parent.children[3])
+    }
+  }
+  */
+</script>

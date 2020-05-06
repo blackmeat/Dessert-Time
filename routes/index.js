@@ -18,5 +18,6 @@ module.exports = (app) => {
   app.get("/logout", userController.logout)
 
   // Product 
-  app.get("/products", productController.getProducts)
+  app.get("/products", productController.productsPage)
+  app.get("/subscribe", productController.subscribePage)
 }
