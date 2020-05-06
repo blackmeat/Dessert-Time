@@ -1,6 +1,6 @@
 const userController = require("../controllers/userController")
 const productController = require("../controllers/productController")
-
+const cartController = require("../controllers/cartController")
 
 
 module.exports = (app) => {
@@ -29,4 +29,6 @@ module.exports = (app) => {
   // Product 
   app.get("/products", productController.productsPage)
   app.get("/subscribe", productController.subscribePage)
+  // Cart 
+  app.post("/cart", cartController.postCart)
 }
