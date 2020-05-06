@@ -49,6 +49,7 @@ div#option {
   margin-top: 80px;
 }
 
+
 /* a */
 a#choose_button {
  background-color:rgb(241, 175, 52);
@@ -88,12 +89,16 @@ h1 {
 }
 h1#title {
   font-weight: lighter;
-  color:rgb(70, 135, 233)
+  color:rgb(70, 135, 233);
+}
+h1#account_title {
+  font-weight: bold;
+  color:rgb(1, 96, 134)
 }
 h4#explain {
   color:rgb(236, 71, 11);
 }
-h5 {
+h4#account_title,h5 {
   color:black
 }
 h5#option_title {
@@ -126,12 +131,22 @@ button#step {
 button#buy {
   padding:8px 200px 8px 200px;
 }
-
+button#submit {
+  background-color:rgb(251, 82, 21);
+  color:white;
+}
+label {
+  color:slategrey
+}
 /* i */
 i.fa-check-circle {
   margin-top: 20px;
   font-size: 30px;
   color:rgb(140, 218, 24);
+}
+i.fa-asterisk {
+  color:orangered;
+  font-size:smaller;
 }
 
 hr {

@@ -1,0 +1,57 @@
+<div id="step">
+  <div class="row col-12 mt-5 mb-4">
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 1</small><br>選擇方案
+    </button>
+    <button id="step-now" class="btn btn-primary" disabled>
+      <small>Step 2</small><br>登入帳號
+    </button>
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 3</small><br>收件資訊
+    </button>
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 4</small><br>完成結帳
+    </button>
+  </div>
+  <h1 id="account_title" class="mt-5 mb-4">登入/註冊帳號</h1>
+</div>
+<div class="row col-12">
+  <div class="col-6">
+    <h4 id="account_title">登入</h4>
+    <form class="form-signin" action="/signin" method="POST" style="width: 100%;">
+      <div class="form-label-group my-3">
+        <label>電子郵件 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <input type="text" name="email" class="form-control" placeholder="請輸入電子郵件..." required autofocus>
+      </div>
+      <div class="form-label-group">
+        <label>密碼 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <input type="password" name="password" class="form-control" placeholder="請輸入密碼..." required>
+      </div>
+      <br />
+      <button id="submit" class="btn btn-danger btn-block" type="submit">立即登入</button>
+    </form>
+  </div>
+  <div class="col-6">
+    <h4 id="account_title">註冊</h4>
+    <form class="form-signin" action="/signup" method="POST" style="width: 100%;">
+      <div class="form-label-group mt-3">
+        <label>名稱 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <input type="text" name="name" class="form-control" placeholder="請輸入名稱" required>
+      </div>
+      <div class="form-label-group my-1">
+        <label>電子郵件 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <input type="text" name="email" class="form-control" placeholder="請輸入電子郵件" required>
+      </div>
+      <div class="form-label-group my-1">
+        <label>密碼 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <input type="password" name="password" class="form-control" placeholder="請輸入密碼" required>
+      </div>
+      <div class="form-label-group my-1">
+        <label>密碼驗證 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <input type="password" name="passwordCheck" class="form-control" placeholder="再次輸入密碼" required>
+      </div>
+      <br />
+      <button id="submit" class="btn btn-block" type="submit">立即註冊</button>
+    </form>
+  </div>
+</div>

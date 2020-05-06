@@ -3,10 +3,9 @@ const db = require("../models")
 const User = db.User
 
 const userController = {
-  signUpPage: (req, res) => {
-    res.render('signup')
+  getMyAccount: (req, res) => {
+    res.render("myaccount")
   },
-
   signUp: (req, res) => {
     if (req.body.password !== req.body.passwordCheck) {
       req.flash("error_messages", "兩次密碼輸入不相同")
@@ -30,10 +29,6 @@ const userController = {
           }
         })
     }
-  },
-
-  signInPage: (req, res) => {
-    res.render("signin")
   },
 
   signIn: (req, res) => {
