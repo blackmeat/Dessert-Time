@@ -1,3 +1,4 @@
+{{#if cartId}}
 <div id="step">
   <div class="row col-12 mt-5 mb-4">
     <button id="step" class="btn btn-primary" disabled>
@@ -15,7 +16,10 @@
   </div>
   <h1 id="account_title" class="mt-5 mb-4">登入/註冊帳號</h1>
 </div>
-<div class="row col-12">
+{{else}}
+<h1 id="account_title" class="mt-5 mb-4">登入/註冊帳號</h1>
+{{/if}}
+<div class="row col-12 mt-5">
   <div class="col-6">
     <h4 id="account_title">登入</h4>
     <form class="form-signin" action="/signin" method="POST" style="width: 100%;">

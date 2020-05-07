@@ -4,7 +4,12 @@ const User = db.User
 
 const userController = {
   getMyAccount: (req, res) => {
-    res.render("myaccount")
+    console.log(req.session)
+    let cartId = ""
+    if (req.session.cartId) {
+      cartId = req.session.cartId
+    }
+    res.render("myaccount", { cartId })
   },
   signUp: (req, res) => {
     if (req.body.password !== req.body.passwordCheck) {
