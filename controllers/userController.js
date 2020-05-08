@@ -39,7 +39,12 @@ const userController = {
   signIn: (req, res) => {
     // console.log(req.headers)
     req.flash("success_messages", "成功登入")
-    res.redirect("/home")
+    if (req.session.cartId) {
+      res.redirect("/cart")
+    } else {
+      res.redirect("/home")
+    }
+
   },
 
   logout: (req, res) => {

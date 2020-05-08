@@ -1,6 +1,7 @@
 const userController = require("../controllers/userController")
 const productController = require("../controllers/productController")
 const cartController = require("../controllers/cartController")
+const passport = require("../config/passport")
 
 
 module.exports = (app) => {
@@ -8,7 +9,7 @@ module.exports = (app) => {
     if (req.isAuthenticated()) {
       return next()
     }
-    res.redirect('/signin')
+    res.redirect('/my-account')
   }
   const authenticatedAdmin = (req, res, next) => {
     if (req.isAuthenticated()) {
@@ -22,12 +23,13 @@ module.exports = (app) => {
   // Login
   app.get("/my-account", userController.getMyAccount)
   app.post("/signup", userController.signUp)
-  app.post("/signin", userController.signIn)
-  app.get("/logout", userController.logout)
+  app.post("/signin", passport.authenticate('local', { failureRedirect: '/signin', failureFlash: true }), userController.signIn)
+  app.post("/logout", userController.logout)
 
   // Product 
   app.get("/products", productController.productsPage)
   app.get("/subscribe", productController.subscribePage)
   // Cart 
+  app.get("/cart", authenticated, cartController.getCart)
   app.post("/cart", cartController.postCart)
 }

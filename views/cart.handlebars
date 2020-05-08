@@ -1,0 +1,84 @@
+{{!-- 步驟圖 --}}
+<div id="step">
+  <div class="row col-12 mt-5 mb-4">
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 1</small><br>選擇方案
+    </button>
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 2</small><br>登入帳號
+    </button>
+    <button id="step-now" class="btn btn-primary" disabled>
+      <small>Step 3</small><br>收件資訊
+    </button>
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 4</small><br>完成結帳
+    </button>
+  </div>
+  <h1 id="title" class="my-5">填寫收件資訊</h1>
+</div>
+<form action="">
+  <div class="container">
+    <div class="row col-12">
+      {{!-- 左：顧客資訊 --}}
+      <div class="col-5" style="margin: auto;">
+        {{!-- 訂購人資訊表單 --}}
+        <h5>訂購人資訊 <span class="remind">*為必填項目</span></h5>
+        <hr>
+        <div class="form-group">
+          <label>姓名 <span>*</span></label>
+          <input type="text" class="form-control customer" name="name" required>
+        </div>
+        <div class="form-group">
+          <label>行動電話 <span>*</span></label>
+          <input type="tel" class="form-control customer" name="phone" required>
+        </div>
+        <div class="form-group">
+          <label>Email（寄送訂單資訊） <span>*</span></label>
+          <input type="Email" class="form-control customer" name="email" required>
+        </div>
+        {{!-- 收件人資訊表單 --}}
+        <h5>收件人資訊 <span class="remind">*為必填項目</span></h5>
+        <hr>
+        <div class="form-group">
+          <label>姓名 <span>*</span></label><br>
+          <small>（請填寫真實姓名，以便取貨時身分核對）</small>
+          <input type="text" class="form-control customer" required>
+        </div>
+        <div class="form-group">
+          <label>行動電話 <span>*</span></label><br>
+          <small>（請輸入收件人的行動電話）</small>
+          <input type="tel" class="form-control customer" required>
+        </div>
+        <div class="form-group">
+          <label>寄送地址 <span>*</span></label>
+          <input type="text" class="form-control customer" required>
+        </div>
+        <div class="form-group">
+          <label>訂單備註</label>
+          <textarea class="form-control" style="background-color:rgb(231, 231, 231);"></textarea>
+        </div>
+      </div>
+      {{!-- 右：購物車明細 --}}
+      <div class="col-5" style="margin: 0 auto auto auto;">
+        <h5>購物車明細</h5>
+        <div class="card-body cart-infomation">
+          <h5>訂閱方案</h5>
+          <p id="item">{{product.name}} {{product.english_name}} x 1</p>
+          <h6>小計</h6>
+          <h6 id="price">NT${{product.price}}元</h6>
+          <hr>
+          <h5>運送方式</h5>
+          <p>宅配</p>
+          <hr>
+          <h5>本月扣款金額</h5>
+          <h6 id="price">NT${{product.price}}元 / 每個月</h6>
+          <small><span>* 之後每個月扣款金額為NT${{product.price}}元</span></small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <button class="btn btn-danger my-4" type="submit">下一步</button><br>
+    <a class="btn btn-primary" href="/subscribe">上一步</a>
+  </div>
+</form>
