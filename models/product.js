@@ -5,10 +5,12 @@ module.exports = (sequelize, DataTypes) => {
     english_name: DataTypes.STRING,
     price: DataTypes.INTEGER,
     image: DataTypes.STRING,
-    descritption: DataTypes.TEXT
+    description: DataTypes.TEXT
   }, {});
-  Product.associate = function(models) {
+  Product.associate = function (models) {
     // associations can be defined here
+    Product.hasMany(models.CartItem)
+    Product.hasMany(models.Order)
   };
   return Product;
 };

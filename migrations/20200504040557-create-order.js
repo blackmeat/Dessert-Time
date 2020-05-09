@@ -11,6 +11,15 @@ module.exports = {
       sn: {
         type: Sequelize.INTEGER
       },
+      subscriber_name: {
+        type: Sequelize.STRING
+      },
+      subscriber_phone: {
+        type: Sequelize.STRING
+      },
+      subscriber_email: {
+        type: Sequelize.STRING
+      },
       name: {
         type: Sequelize.STRING
       },
