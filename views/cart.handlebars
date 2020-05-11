@@ -16,7 +16,7 @@
   </div>
   <h1 id="title" class="my-5">填寫收件資訊</h1>
 </div>
-<form action="">
+<form action="/order" method="POST">
   <div class="container">
     <div class="row col-12">
       {{!-- 左：顧客資訊 --}}
@@ -26,15 +26,15 @@
         <hr>
         <div class="form-group">
           <label>姓名 <span>*</span></label>
-          <input type="text" class="form-control customer" name="name" required>
+          <input type="text" class="form-control customer" name="subscriber_name" required>
         </div>
         <div class="form-group">
           <label>行動電話 <span>*</span></label>
-          <input type="tel" class="form-control customer" name="phone" required>
+          <input type="tel" class="form-control customer" name="subscriber_phone" required>
         </div>
         <div class="form-group">
           <label>Email（寄送訂單資訊） <span>*</span></label>
-          <input type="Email" class="form-control customer" name="email" required>
+          <input type="Email" class="form-control customer" name="subscriber_email" required>
         </div>
         {{!-- 收件人資訊表單 --}}
         <h5>收件人資訊 <span class="remind">*為必填項目</span></h5>
@@ -42,16 +42,16 @@
         <div class="form-group">
           <label>姓名 <span>*</span></label><br>
           <small>（請填寫真實姓名，以便取貨時身分核對）</small>
-          <input type="text" class="form-control customer" required>
+          <input type="text" class="form-control customer" name="name" required>
         </div>
         <div class="form-group">
           <label>行動電話 <span>*</span></label><br>
           <small>（請輸入收件人的行動電話）</small>
-          <input type="tel" class="form-control customer" required>
+          <input type="tel" class="form-control customer" name="phone" required>
         </div>
         <div class="form-group">
           <label>寄送地址 <span>*</span></label>
-          <input type="text" class="form-control customer" required>
+          <input type="text" class="form-control customer" name="address" required>
         </div>
         <div class="form-group">
           <label>訂單備註</label>
@@ -77,8 +77,13 @@
       </div>
     </div>
   </div>
+  <input type="hidden" name="userId" value="{{user.id}}">
+  <input type="hidden" name="productId" value="{{product.id}}">
+  <input type="hidden" name="amount" value="{{product.price}}">
+  <input type="hidden" name="shipping_status" value="尚未出貨">
+  <input type="hidden" name="payment_status" value="尚未付款">
   <div style="text-align: center;">
     <button class="btn btn-danger my-4" type="submit">下一步</button><br>
-    <a class="btn btn-primary" href="/subscribe">上一步</a>
+    <a class="btn btn-outline-primary" href="/subscribe">重新選擇方案</a>
   </div>
 </form>

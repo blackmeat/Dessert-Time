@@ -1,6 +1,7 @@
 const userController = require("../controllers/userController")
 const productController = require("../controllers/productController")
 const cartController = require("../controllers/cartController")
+const orderController = require("../controllers/orderController")
 const passport = require("../config/passport")
 
 
@@ -32,4 +33,7 @@ module.exports = (app) => {
   // Cart 
   app.get("/cart", authenticated, cartController.getCart)
   app.post("/cart", cartController.postCart)
+  // Order
+  app.post("/order", authenticated, orderController.createOrder)
+  app.get("/checkout", authenticated, orderController.checkout)
 }
