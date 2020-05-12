@@ -35,5 +35,5 @@ module.exports = (app) => {
   app.post("/cart", cartController.postCart)
   // Order
   app.post("/order", authenticated, orderController.createOrder)
-  app.get("/checkout", authenticated, orderController.checkout)
+  app.get("/order/:id/checkout", orderController.checkout)
 }

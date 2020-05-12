@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer")
 const db = require("../models")
 const Order = db.Order
 const CartItem = db.CartItem
+const Product = db.Product
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -48,12 +49,16 @@ const orderController = {
       CartItem
         .destroy({ where: { CartId: req.session.cartId } })
         .then((cartitem) => {
-          return res.redirect("/checkout")
+          return res.redirect(`/order/${order.id}/checkout`)
         })
     })
   },
   checkout: (req, res) => {
-    res.render("checkout")
+    Order.findByPk(req.params.id, { include: Product })
+      .then(order => {
+        console.log(order)
+        res.render("checkout", { order })
+      })
   }
 }
 

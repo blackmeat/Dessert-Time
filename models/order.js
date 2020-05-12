@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     Order.hasMany(models.Payment)
     Order.belongsTo(models.User)
+    Order.belongsTo(models.Product)
   };
   return Order;
 };

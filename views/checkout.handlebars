@@ -1,1 +1,117 @@
-<h1>訂單已成立</h1>
+{{!-- 步驟圖 --}}
+<div id="step">
+  <div class="row col-12 mt-5 mb-4">
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 1</small><br>選擇方案
+    </button>
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 2</small><br>登入帳號
+    </button>
+    <button id="step" class="btn btn-primary" disabled>
+      <small>Step 3</small><br>收件資訊
+    </button>
+    <button id="step-now" class="btn btn-primary" disabled>
+      <small>Step 4</small><br>前往結帳
+    </button>
+  </div>
+  <h1 id="title" class="my-5">確認訂單成立</h1>
+</div>
+<div class="container">
+  <div class="card-body cart-infomation">
+    <h4>訂單資訊</h4>
+    <hr>
+    <div class="col-12 row my-3">
+      <div class="col-6">
+        <h6>訂單編號：</h6>
+        <h6>訂單狀態：已成立</h6>
+      </div>
+      <div class="col-6">
+        <h6>訂單日期：</h6>
+      </div>
+    </div>
+    <h4>訂閱方案</h4>
+    <hr>
+    <table class="table table-borderless" style="line-height:15px">
+      <thead>
+        <tr>
+          <th scope="col">商品</th>
+          <th scope="col">價格</th>
+          <th scope="col">數量</th>
+          <th scope="col">小計</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td scope="row" style="color:rgb(56, 57, 58)">
+            <img src="{{order.Product.image}}" alt="商品圖片" width="150px" height="150px">
+            {{order.Product.name}} {{order.Product.english_name}}
+          </td>
+          <td style="line-height:140px;">NT$ {{order.amount}}元 / 月</td>
+          <td style="line-height:140px;">1</td>
+          <td style="line-height:140px;">NT$ {{order.amount}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row my-5">
+      <div class="col-6">
+        <h4>付款資訊</h4>
+        <hr>
+        <h6>付款方式：<span>信用卡定期定額</span></h6>
+        <h6>付款狀態：<span>{{order.payment_status}}</span></h6>
+        <h6>付款備註：</h6>
+      </div>
+      <div class="col-6">
+        <h4>送貨資訊</h4>
+        <hr>
+        <h6>送貨狀態：<span>{{order.shipping_status}}</span></h6>
+        <h6>送貨備註：</h6>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <h4>訂購人資訊</h4>
+        <hr>
+        <h6>訂購人姓名：<span>{{order.subscriber_name}}</span></h6>
+        <h6>訂購人電話：<span>{{order.subscriber_phone}}</span></h6>
+        <h6>訂購人EMAIL：<span>{{order.subscriber_email}}</span></h6>
+      </div>
+      <div class="col-6">
+        <h4>收件人資訊</h4>
+        <hr>
+        <h6>收件人姓名：<span>{{order.name}}</span></h6>
+        <h6>收件人電話：<span>{{order.phone}}</span></h6>
+        <h6>收件人地址：<span>{{order.address}}</span></h6>
+        <h6>備註：</h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="text-align: center;">
+  <form action="">
+    <button class="btn btn-danger mt-5 mb-4" type="submit"
+      style="padding:15px 60px 15px 60px;border-radius:10px;font-size:20px">立即結帳</button><br>
+  </form>
+</div>
+
+<style>
+  h4 {
+    color: rgb(255, 136, 0);
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, rgb(223, 123, 123), #ccc);
+  }
+
+  th {
+    font-weight: lighter;
+  }
+
+  span {
+    font-weight: lighter;
+    color: black
+  }
+</style>
