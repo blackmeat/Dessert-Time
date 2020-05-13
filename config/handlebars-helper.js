@@ -1,3 +1,4 @@
+const moment = require("moment")
 module.exports = {
   ifCond: function (a, b, options) {
     if (a === b) {
@@ -13,5 +14,8 @@ module.exports = {
   },
   textSub_c: function (a) {
     return String(a).substring(24)
-  }
+  },
+  date: function (a) {
+    return moment(a).format('YYYY-MM-DD HH:mm:ss')
+  },
 }
