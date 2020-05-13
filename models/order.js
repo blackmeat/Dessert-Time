@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
-    sn: DataTypes.INTEGER,
+    sn: DataTypes.STRING,
     subscriber_name: DataTypes.STRING,
     subscriber_phone: DataTypes.STRING,
     subscriber_email: DataTypes.STRING,
