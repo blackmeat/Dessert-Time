@@ -10,23 +10,30 @@
     <button id="step" class="btn btn-primary" disabled>
       <small>Step 3</small><br>收件資訊
     </button>
+    {{#ifNotCond order.payment_status "完成付款"}}
     <button id="step-now" class="btn btn-primary" disabled>
       <small>Step 4</small><br>前往結帳
     </button>
+    {{else}}
+    <button id="step-now" class="btn btn-primary" disabled>
+      <small>Step 4</small><br>完成結帳
+    </button>
+    {{/ifNotCond}}
   </div>
+  {{#ifNotCond order.payment_status "完成付款"}}
   <h1 id="title" class="mt-5 mb-4">確認訂單成立</h1>
+  {{else}}
+  <h1 id="title" class="mt-5 mb-4">完成付款<br><i class="fa fa-check-circle"></i></h1>
+  {{/ifNotCond}}
   <h3 class="mb-3">訂單編號<br>#{{order.sn}}</h3>
 </div>
 <div class="container">
   <div class="card-body cart-infomation">
     <h4>訂單資訊</h4>
     <hr>
-    <div class="col-12 row my-3">
+    <div class="col-12 row my-4">
       <div class="col-6">
-        <h6>訂單編號：{{order.sn}}</h6>
         <h6>訂單狀態：已成立</h6>
-      </div>
-      <div class="col-6">
         <h6>訂單日期：{{date order.createdAt}}</h6>
       </div>
     </div>
@@ -87,13 +94,15 @@
     </div>
   </div>
 </div>
+{{#ifNotCond order.payment_status "完成付款"}}
 <div style="text-align: center;">
   <form name="Spgateway" action="{{tradeInfo.PayGateWay}}" method="POST">
     <input type="hidden" name="MerchantID_" value="{{tradeInfo.MerchantID}}"><br>
     <input type="hidden" name="PostData_" value="{{tradeInfo.PostData}}"><br>
-    <button class="btn btn-danger mt-5 mb-4" type="submit">立即結帳</button>
+    <button class="btn btn-danger mt-4 mb-4" type="submit">立即結帳</button>
   </form>
 </div>
+{{/ifNotCond}}
 
 <style>
   h4 {

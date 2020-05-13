@@ -6,6 +6,12 @@ module.exports = {
     }
     return options.inverse(this)
   },
+  ifNotCond: function (a, b, options) {
+    if (a !== b) {
+      return options.fn(this)
+    }
+    return options.inverse(this)
+  },
   textSub_a: function (a) {
     return String(a).substring(0, 13)
   },
