@@ -86,11 +86,11 @@
     </div>
   </div>
 </div>
-
 <div style="text-align: center;">
-  <form action="">
-    <button class="btn btn-danger mt-5 mb-4" type="submit"
-      style="padding:15px 60px 15px 60px;border-radius:10px;font-size:20px">立即結帳</button><br>
+  <form name="Spgateway" action="{{tradeInfo.PayGateWay}}" method="POST">
+    <input type="text" name="MerchantID_" value="{{tradeInfo.MerchantID}}"><br>
+    <input type="text" name="PostData_" value="{{tradeInfo.PostData}}"><br>
+    <button class="btn btn-danger mt-5 mb-4" type="submit">立即結帳</button>
   </form>
 </div>
 
@@ -113,5 +113,11 @@
   span {
     font-weight: lighter;
     color: black
+  }
+
+  button.btn {
+    padding: 15px 60px 15px 60px;
+    border-radius: 10px;
+    font-size: 20px;
   }
 </style>
