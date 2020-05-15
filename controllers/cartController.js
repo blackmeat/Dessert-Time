@@ -50,7 +50,7 @@ const cartController = {
             if (req.session.cartId) {
               res.render("cart", { product })
             } else {
-              res.redirect("/subscribe")
+              res.redirect("/products/subscribe")
             }
           })
       })

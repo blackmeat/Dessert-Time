@@ -85,6 +85,9 @@ a#option {
   margin:auto;
   border-radius: 12px;
 }
+a.nav-link {
+  color:black
+}
 
 /* Font */
 h1 {
@@ -130,6 +133,9 @@ span.remind {
   font-size: 13px;
   color:crimson;
 }
+span.close {
+  color:rgb(80, 90, 100);
+}
 
 /* Button */
 button#step-now {
@@ -155,9 +161,13 @@ button#submit {
   background-color:rgb(247, 35, 7);
   color:white;
 }
+button#dropdown-toggle {
+  padding-right:0px
+}
 label {
   color:slategrey
 }
+
 /* i */
 i.fa-check-circle {
   margin-top: 20px;
@@ -169,17 +179,37 @@ i.fa-asterisk {
   font-size:smaller;
 }
 
+/* Input */
 input.customer {
   border: none;
   background-color:rgb(231, 231, 231);
   border-radius:5px;
 }
 input.customer:focus {
-  background-color:rgb(231, 231, 231) ;
+  background-color:rgb(231, 231, 231);
 }
+
+/* Hr */
 hr {
-  border:1px solid black
+  border:1px solid black;
 }
+hr#navbar {
+  margin-top:5px;
+}
+
+/* Nav */
+nav.navbar {
+  padding:0px;
+  background-color:snow;
+}
+
+/* body */
 body {
   background-color:snow
 }
+
+/* footer */
+footer {
+  text-align: center;
+}
+

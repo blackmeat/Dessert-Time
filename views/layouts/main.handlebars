@@ -12,31 +12,61 @@
 </head>
 
 <body>
-
   <div class="container">
     <div class="container">
+      {{!-- flash --}}
+      {{#if success_messages}}
+      <div class="alert alert-success" role="alert" style="margin: 30px 0 ;">
+        <i class="fa fa-check"></i>{{success_messages}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span class="close" aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {{/if}}
+      {{#if error_messages}}
+      <div class="alert alert-danger" role="alert" style="margin: 30px 0 ;">
+        {{error_messages}}
+      </div>
+      {{/if}}
+      {{!-- header --}}
       <header>
         <div id="logo">
           <a href="/">
             <img src="./images/logo.png" width="210px" height="100px" alt="LOGO">
           </a>
         </div>
-        <hr>
+        <nav class="navbar navbar-expand-lg">
+          <div class="collapse navbar-collapse">
+            <a class="nav-link" href="/">首頁</a>
+            <a class="nav-link" href="/products">訂購零食箱</a>
+          </div>
+          <div class="dropdown">
+            <button class="btn btn-outline dropdown-toggle" type="button" data-toggle="dropdown">
+              <i class="fa fa-user">&nbsp會員專區</i>
+            </button>
+            <div class="dropdown-menu">
+              <h5 class="dropdown-header">會員專區</h5>
+              <div class="dropdown-divider"></div>
+              <a href="/my-account" class="dropdown-item">登入/註冊</a>
+              <a href="/users/orders" class="dropdown-item">訂單查詢</a>
+            </div>
+          </div>
+          {{#if user}}
+          <form action="/logout" method="POST">
+            <button class="btn" type="submit">
+              <i class="fa fa-sign-out">&nbsp登出</i>
+            </button>
+          </form>
+          {{/if}}
+        </nav>
+        <hr id="navbar">
       </header>
+      {{!-- body --}}
       <main>
-        {{#if success_messages}}
-        <div class="alert alert-success" role="alert" style="margin: 30px 0 ;">
-          {{success_messages}}
-        </div>
-        {{/if}}
-        {{#if error_messages}}
-        <div class="alert alert-danger" role="alert" style="margin: 30px 0 ;">
-          {{error_messages}}
-        </div>
-        {{/if}}
         {{{body}}}
       </main>
-      <footer style="text-align: center;">
+      {{!-- footer --}}
+      <footer>
         <hr>
         <br>
         <div>

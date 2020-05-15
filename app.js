@@ -24,6 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const static = express.static("public")
 app.use(static)
 app.use("/order/:id/checkout", static)
+app.use("/products", static)
 
 // session
 const sessionParser = session({ secret: "12345", resave: false, saveUninitialized: false })
