@@ -99,7 +99,7 @@
   <form name="Spgateway" action="{{tradeInfo.PayGateWay}}" method="POST">
     <input type="hidden" name="MerchantID_" value="{{tradeInfo.MerchantID}}"><br>
     <input type="hidden" name="PostData_" value="{{tradeInfo.PostData}}"><br>
-    <button class="btn btn-danger mt-4 mb-4" type="submit">立即結帳</button>
+    <button class="btn btn-danger mt-4 mb-4 checkout" type="submit">立即結帳</button>
   </form>
 </div>
 {{/ifNotCond}}
@@ -125,7 +125,7 @@
     color: black
   }
 
-  button.btn {
+  button.checkout {
     padding: 15px 60px 15px 60px;
     border-radius: 10px;
     font-size: 20px;

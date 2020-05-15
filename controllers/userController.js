@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt-nodejs")
 const db = require("../models")
 const User = db.User
+const Order = db.Order
 
 const userController = {
   getMyAccount: (req, res) => {
@@ -9,6 +10,7 @@ const userController = {
     if (req.session.cartId) {
       cartId = req.session.cartId
     }
+    // 如果已經登入跳轉至首頁
     res.render("myaccount", { cartId })
   },
   signUp: (req, res) => {
@@ -35,23 +37,27 @@ const userController = {
         })
     }
   },
-
   signIn: (req, res) => {
-    // console.log(req.headers)
     req.flash("success_messages", "成功登入")
     if (req.session.cartId) {
       res.redirect("/cart")
     } else {
       res.redirect("/home")
     }
-
   },
-
   logout: (req, res) => {
     req.flash("success_messages", "已經成功登出")
     req.logout()
     res.redirect("/home")
   },
+  getOrders: (req, res) => {
+    Order
+      .findAll({ where: { UserId: req.user.id }, order: [["createdAt", "DESC"]] })
+      .then((orders) => {
+        res.render("orders", { orders })
+      })
+  }
+
 }
 
 module.exports = userController

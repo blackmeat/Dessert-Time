@@ -1,0 +1,48 @@
+<div class="col-md-12 row">
+  <div class="col-md-3 col-3" style="text-align: center;">
+    <ul class="list-group list-group-flush">
+      <h4>會員專區</h4>
+      <li class="list-group-item" style="background-color: snow;">
+        <a href="/users/profile">個人資料</a>
+      </li>
+      <li class="list-group-item" style="background-color: snow;">
+        <a href="/users/orders">訂單查詢</a>
+      </li>
+      <li class="list-group-item" style="background-color: snow;">
+        <a href="/users/subscribe">正在訂閱</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-9 col-9">
+    <h1>訂單查詢</h1>
+    <br>
+    <table class="table" style="text-align: center;">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">訂單編號</th>
+          <th scope="col">下單時間</th>
+          <th scope="col">訂單金額</th>
+          <th scope="col">訂單狀態</th>
+          <th scope="col">訂單操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each orders}}
+        <tr>
+          <td><a href="/order/{{this.id}}/checkout">{{this.sn}}</a></td>
+          <td>{{date this.createdAt}}</td>
+          <td>${{this.amount}}/月</td>
+          <td>{{this.payment_status}}</td>
+          <td>
+            {{#ifNotCond this.payment_status "完成付款"}}
+            <a href="">立即付款</a>
+            {{else}}
+            <a href="/order/{{this.id}}/checkout">查看訂單</a>
+            {{/ifNotCond}}
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
