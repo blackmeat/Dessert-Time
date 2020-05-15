@@ -11,6 +11,13 @@ const adminController = {
         res.render("admin/users", { users })
       })
   },
+  getProducts: (req, res) => {
+    Product
+      .findAll()
+      .then((products) => {
+        res.render("admin/products", { products })
+      })
+  },
   getOrders: (req, res) => {
     Order
       .findAll({
@@ -20,7 +27,8 @@ const adminController = {
       .then((orders) => {
         res.render("admin/orders", { orders })
       })
-  }
+  },
+
 }
 
 module.exports = adminController

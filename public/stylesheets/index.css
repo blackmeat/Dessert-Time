@@ -203,13 +203,21 @@ nav.navbar {
   background-color:snow;
 }
 
-/* body */
+/* Body */
 body {
-  background-color:snow
+  background-color:snow;
+  height: 100%;
 }
 
-/* footer */
+/* Main */
+main {
+  min-height: 100%;
+  margin-bottom: 50px;
+}
+
+/* Footer */
 footer {
   text-align: center;
 }
+
 
