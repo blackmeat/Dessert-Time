@@ -2,6 +2,7 @@ const userController = require("../controllers/userController")
 const productController = require("../controllers/productController")
 const cartController = require("../controllers/cartController")
 const orderController = require("../controllers/orderController")
+const adminController = require("../controllers/adminController")
 const passport = require("../config/passport")
 
 
@@ -40,4 +41,6 @@ module.exports = (app) => {
   app.get("/order/:id/checkout", orderController.checkout)
   // NewebPay
   app.post("/spgateway/callback", orderController.spgatewayCallback)
+  // Admin
+  app.get("/admin/users", authenticatedAdmin, adminController.getUsers)
 }

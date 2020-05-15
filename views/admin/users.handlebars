@@ -1,0 +1,33 @@
+<h1 class="mt-4">後台資料管理</h1>
+<div class="col-md-12 col-12 my-4" style="text-align: center;">
+  <a href="/admin/users">會員資料</a> ｜
+  <a href="/admin/products">商品資料</a> ｜
+  <a href="/admin/orders">訂單紀錄</a> ｜
+  <a href="/admin/payment">交易紀錄</a>
+</div>
+<table class="table table-bordered" style="text-align: center;">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">＃</th>
+      <th scope="col">會員名稱</th>
+      <th scope="col">電子信箱</th>
+      <th scope="col">網站角色</th>
+      <th scope="col">其他操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each users}}
+    <tr>
+      <td>{{this.id}}</td>
+      <td>{{this.name}}</td>
+      <td>{{this.email}}</td>
+      {{#ifCond this.role true}}
+      <td>管理者</td>
+      {{else}}
+      <td>一般會員</td>
+      {{/ifCond}}
+      <td></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
