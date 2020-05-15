@@ -11,6 +11,16 @@ const adminController = {
         res.render("admin/users", { users })
       })
   },
+  getOrders: (req, res) => {
+    Order
+      .findAll({
+        order: [["createdAt", "DESC"]],
+        include: [Product, User]
+      })
+      .then((orders) => {
+        res.render("admin/orders", { orders })
+      })
+  }
 }
 
 module.exports = adminController

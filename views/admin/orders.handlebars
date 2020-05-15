@@ -1,0 +1,31 @@
+<h1 class="mt-4">後台資料管理</h1>
+<div class="col-md-12 col-12 my-4" style="text-align: center;">
+  <a href="/admin/users">會員資料</a> ｜
+  <a href="/admin/products">商品資料</a> ｜
+  <a href="/admin/orders">訂單紀錄</a> ｜
+  <a href="/admin/payment">交易紀錄</a>
+</div>
+<table class="table table-bordered" style="text-align: center;">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">訂單編號</th>
+      <th scope="col">會員名稱</th>
+      <th scope="col">下單時間</th>
+      <th scope="col">訂閱方案</th>
+      <th scope="col">訂單金額</th>
+      <th scope="col">訂單狀態</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each orders}}
+    <tr>
+      <td>{{this.sn}}</td>
+      <td>{{this.User.name}}</td>
+      <td>{{date this.createdAt}}</td>
+      <td>{{this.Product.name}}</td>
+      <td>＄{{this.amount}}</td>
+      <td>{{this.payment_status}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
