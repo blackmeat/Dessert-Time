@@ -52,10 +52,13 @@
             <div class="dropdown-menu">
               <h5 class="dropdown-header">會員專區</h5>
               <div class="dropdown-divider"></div>
+              {{#if user}}
+              {{else}}
               <a href="/my-account" class="dropdown-item">登入/註冊</a>
+              {{/if}}
               <a href="/users/profile" class="dropdown-item">個人資料</a>
               <a href="/users/orders" class="dropdown-item">訂單查詢</a>
-              <a href="/users/subscribe" class="dropdown-item">正在訂閱</a>
+              <a href="/users/subscribing" class="dropdown-item">正在訂閱</a>
             </div>
           </div>
           {{#if user}}

@@ -30,6 +30,7 @@ module.exports = (app) => {
   app.post("/logout", userController.logout)
   // User
   app.get("/users/orders", authenticated, userController.getOrders)
+  app.get("/users/subscribing", authenticated, userController.getSubscribing)
   // Product 
   app.get("/products", productController.productsPage)
   app.get("/products/subscribe", productController.subscribePage)

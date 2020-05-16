@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt-nodejs")
 const db = require("../models")
 const User = db.User
 const Order = db.Order
+const Product = db.Product
 
 const userController = {
   getMyAccount: (req, res) => {
@@ -10,8 +11,10 @@ const userController = {
     if (req.session.cartId) {
       cartId = req.session.cartId
     }
-    // 如果已經登入跳轉至首頁
-    res.render("myaccount", { cartId })
+    if (req.user) {
+      res.redirect("/")
+    }
+    return res.render("myaccount", { cartId })
   },
   signUp: (req, res) => {
     if (req.body.password !== req.body.passwordCheck) {
@@ -56,6 +59,16 @@ const userController = {
       .findAll({ where: { UserId: req.user.id }, order: [["createdAt", "DESC"]] })
       .then((orders) => {
         res.render("orders", { orders })
+      })
+  },
+  getSubscribing: (req, res) => {
+    Order
+      .findAll({
+        where: { payment_status: "完成付款" },
+        include: [Product]
+      })
+      .then((orders) => {
+        res.render("subscribing", { orders })
       })
   }
 
