@@ -1,12 +1,12 @@
 const crypto = require("crypto")
 
-const URL = "http://ab1a1754.ngrok.io"
+const URL = ""
 const MerchantID = process.env.MERCHANTID
 const HashKey = process.env.HASHKEY
 const HashIV = process.env.HASHIV
-const PayGateWay = "https://ccore.spgateway.com/MPG/period"
-const ReturnURL = URL + "/spgateway/callback?from=ReturnURL"
-const NotifyURL = URL + "/spgateway/callback?from=NotifyURL"
+const PayGateWay = "https://ccore.newebpay.com/MPG/period"
+const ReturnURL = URL + "/newebpay/callback?from=ReturnURL"
+const NotifyURL = URL + "/newebpay/callback?from=NotifyURL"
 const BackURL = URL + "/order"
 
 function genDataChain(TradeInfo) {
@@ -44,8 +44,8 @@ function getTradeInfo(Amt, Desc, email) {
     "MerOrderNo": Date.now(), // 商店訂單編號
     "ProdDesc": Desc, // 產品名稱
     "PeriodAmt": Amt, // 訂單金額
-    "PeriodType": "M", // 交易週期
-    "PeriodPoint": 14, // 交易週期時間點
+    "PeriodType": "D", // 交易週期
+    "PeriodPoint": 2, // 交易週期時間點
     "PeriodStartType": 2, // 檢查卡號模式（共三種）
     "PeriodTimes": 12, // 交易期數
     "PayerEmail": email, // 付款人電子信箱

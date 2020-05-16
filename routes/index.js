@@ -41,7 +41,7 @@ module.exports = (app) => {
   app.post("/order", authenticated, orderController.createOrder)
   app.get("/order/:id/checkout", authenticated, orderController.checkout)
   // NewebPay
-  app.post("/spgateway/callback", orderController.spgatewayCallback)
+  app.post("/newebpay/callback", orderController.newebpayCallback)
   // Admin
   app.get("/admin/users", authenticatedAdmin, adminController.getUsers)
   app.put("/admin/users/:id", authenticatedAdmin, adminController.putUser)

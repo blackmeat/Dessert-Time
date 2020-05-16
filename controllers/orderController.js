@@ -4,6 +4,7 @@ const db = require("../models")
 const Order = db.Order
 const CartItem = db.CartItem
 const Product = db.Product
+const Payment = db.Payment
 const transporter = nodemailer.createTransport({
   service: "gmail",
   secure: true,
@@ -73,43 +74,54 @@ const orderController = {
 
       })
   },
-  spgatewayCallback: (req, res) => {
-    console.log("===== spgatewayCallback =====")
+  newebpayCallback: (req, res) => {
+    console.log("===== newebpayCallback =====")
     console.log(req.method)
     console.log(req.body)
-    console.log("==========")
 
     const data = JSON.parse(helpers.create_mpg_aes_decrypt(req.body.Period))
 
-    console.log("===== spgatewayCallback: create_mpg_aes_decrypt、data =====")
+    console.log("===== newebpayCallback: create_mpg_aes_decrypt、data =====")
     console.log(data)
 
-    if (data.Status === "SUCCESS") {
-      Order
-        .findOne({ where: { sn: data.Result.MerchantOrderNo } })
-        .then(order => {
+    const { Result } = data
+    console.log(typeof Result.AuthTime)
+    Order
+      .findOne({ where: { sn: Result.MerchantOrderNo } })
+      .then(order => {
+        if (data.Status === "SUCCESS") {
           order.update({
             ...order,
             payment_status: "完成付款",
-          }).then(order => {
-            order.save()
-            return res.redirect(`/order/${order.id}/checkout`)
           })
-        })
-    } else {
-      Order
-        .findOne({ where: { sn: data.Result.MerchantOrderNo } })
-        .then(order => {
+            .then(order => {
+              Payment.create({
+                sn: Result.MerchantOrderNo,
+                amount: Result.PeriodAmt,
+                params: data.Message,
+                paid_at: Date.now(),
+                payment_method: "信用卡定期定額",
+                OrderId: order.id,
+              })
+              return res.redirect(`/order/${order.id}/checkout`)
+            })
+        } else {
           order.update({
             ...order,
             payment_status: "付款失敗",
           }).then(order => {
-            order.save()
+            Payment.create({
+              sn: Result.MerchantOrderNo,
+              amount: Result.PeriodAmt,
+              params: data.Message,
+              paid_at: Date.now(),
+              payment_method: "信用卡定期定額",
+              OrderId: order.id,
+            })
             return res.redirect(`/order/${order.id}/checkout`)
           })
-        })
-    }
-
+        }
+      })
   }
 }
 
