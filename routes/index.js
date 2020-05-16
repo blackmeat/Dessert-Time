@@ -45,5 +45,6 @@ module.exports = (app) => {
   app.get("/admin/users", authenticatedAdmin, adminController.getUsers)
   app.get("/admin/products", authenticatedAdmin, adminController.getProducts)
   app.get("/admin/products/add", authenticatedAdmin, adminController.addProduct)
+  app.post("/admin/products", authenticatedAdmin, adminController.postProduct)
   app.get("/admin/orders", authenticatedAdmin, adminController.getOrders)
 }

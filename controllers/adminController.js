@@ -21,6 +21,17 @@ const adminController = {
   addProduct: (req, res) => {
     res.render("admin/product")
   },
+  postProduct: (req, res) => {
+    const { name, english_name, price, description } = req.body
+    Product.create({
+      name: name,
+      english_name: english_name,
+      price: price,
+      description: description
+    }).then((product) => {
+      res.redirect("/admin/products")
+    })
+  },
   getOrders: (req, res) => {
     Order
       .findAll({
