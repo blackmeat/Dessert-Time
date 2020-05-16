@@ -56,6 +56,9 @@ const orderController = {
     Order
       .findByPk(req.params.id, { include: Product })
       .then(order => {
+        if (order.UserId !== req.user.id) {
+          return res.redirect("/users/orders")
+        }
         const tradeInfo = helpers.getTradeInfo(order.amount, order.Product.name, order.subscriber_email)
         if (order.payment_status === "尚未付款" || order.payment_status === "付款失敗") {
           order.update({
