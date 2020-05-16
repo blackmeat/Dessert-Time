@@ -26,7 +26,11 @@
       {{else}}
       <td>一般會員</td>
       {{/ifCond}}
-      <td></td>
+      <td>
+        <form action="/admin/users/{{this.id}}?_method=PUT" method="POST">
+          <button class="btn btn-link" type="submit" style="padding:0">切換角色</button>
+        </form>
+      </td>
     </tr>
     {{/each}}
   </tbody>

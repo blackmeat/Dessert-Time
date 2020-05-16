@@ -43,6 +43,7 @@ module.exports = (app) => {
   app.post("/spgateway/callback", orderController.spgatewayCallback)
   // Admin
   app.get("/admin/users", authenticatedAdmin, adminController.getUsers)
+  app.put("/admin/users/:id", authenticatedAdmin, adminController.putUser)
   app.get("/admin/products", authenticatedAdmin, adminController.getProducts)
   app.get("/admin/products/add", authenticatedAdmin, adminController.addProduct)
   app.post("/admin/products", authenticatedAdmin, adminController.postProduct)

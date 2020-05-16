@@ -11,6 +11,18 @@ const adminController = {
         res.render("admin/users", { users })
       })
   },
+  putUser: (req, res) => {
+    User
+      .findByPk(req.params.id)
+      .then((user) => {
+        user.update({
+          ...user,
+          role: !user.role
+        }).then((user) => {
+          res.redirect("/admin/users")
+        })
+      })
+  },
   getProducts: (req, res) => {
     Product
       .findAll()

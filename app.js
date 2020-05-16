@@ -6,6 +6,8 @@ const passport = require("./config/passport")
 const bodyParser = require("body-parser")
 const session = require("express-session")
 const flash = require("connect-flash")
+const methodOverride = require("method-override")
+
 const app = express()
 const port = 3000
 
@@ -28,6 +30,9 @@ app.use("/products", static)
 app.use("/users", static)
 app.use("/admin", static)
 app.use("/admin/products", static)
+
+// method-override
+app.use(methodOverride("_method"))
 
 // session
 const sessionParser = session({ secret: "12345", resave: false, saveUninitialized: false })
