@@ -5,6 +5,10 @@ const Product = db.Product
 
 const cartController = {
   postCart: (req, res) => {
+    if (!req.body.productId) {
+      req.flash("error_messages", "請選擇方案")
+      res.redirect("back")
+    }
     return Cart.findOrCreate({
       where: {
         id: req.session.cartId || 0,
@@ -27,13 +31,12 @@ const cartController = {
               .spread(function (cartItem, created) {
                 return cartItem.update({
                   quantity: 1,
-                })
-                  .then((cartItem) => {
-                    req.session.cartId = cart.id
-                    return req.session.save(() => {
-                      return res.redirect("/cart")
-                    })
+                }).then((cartItem) => {
+                  req.session.cartId = cart.id
+                  return req.session.save(() => {
+                    res.redirect("/cart")
                   })
+                })
               })
           })
       });
@@ -42,17 +45,17 @@ const cartController = {
     console.log(req.session.cartId)
     console.log(req.user)
     CartItem
-      .findOne({ where: { CartId: req.session.cartId } })
+      .findOne({
+        where: { CartId: req.session.cartId },
+        include: [Product]
+      })
       .then((item) => {
-        Product
-          .findOne({ where: { id: item.ProductId } })
-          .then((product) => {
-            if (req.session.cartId) {
-              res.render("cart", { product })
-            } else {
-              res.redirect("/products/subscribe")
-            }
-          })
+        const product = item.Product
+        if (req.session.cartId && product.id) {
+          res.render("cart", { product })
+        } else {
+          res.redirect("/products/subscribe")
+        }
       })
 
   }
