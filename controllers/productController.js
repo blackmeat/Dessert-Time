@@ -10,7 +10,7 @@ const productController = {
       })
   },
   subscribePage: (req, res) => {
-    let productId = ''
+    let productId = ""
     if (req.query.productId) {
       productId = Number(req.query.productId)
     }

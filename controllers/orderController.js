@@ -7,7 +7,7 @@ const CartItem = db.CartItem
 const Product = db.Product
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   secure: true,
   auth: {
     type: "OAuth2",
@@ -51,42 +51,42 @@ function create_mpg_aes_decrypt(TradeInfo) {
 
 function getTradeInfo(Amt, Desc, email, ) {
 
-  console.log('===== getTradeInfo =====')
+  console.log("===== getTradeInfo =====")
   console.log(Amt, Desc, email)
-  console.log('==========')
+  console.log("==========")
   data = {
-    'RespondType': 'JSON', // 回傳格式
-    'TimeStamp': Date.now(), // 時間戳記
-    'Version': 1.0, // 串接程式版本
-    'MerOrderNo': Date.now(), // 商店訂單編號
-    'ProdDesc': Desc, // 產品名稱
-    'PeriodAmt': Amt, // 訂單金額
-    'PeriodType': 'M', // 交易週期
-    'PeriodPoint': 14, // 交易週期時間點
-    'PeriodStartType': 2, // 檢查卡號模式（共三種）
-    'PeriodTimes': 12, // 交易期數
-    'PayerEmail': email, // 付款人電子信箱
-    'ReturnURL': ReturnURL, // 支付完成返回商店網址
-    'NotifyURL': NotifyURL, // 支付通知網址/每期授權結果通知
-    'BackURL': BackURL, // 支付取消返回商店網址
+    "RespondType": "JSON", // 回傳格式
+    "TimeStamp": Date.now(), // 時間戳記
+    "Version": 1.0, // 串接程式版本
+    "MerOrderNo": Date.now(), // 商店訂單編號
+    "ProdDesc": Desc, // 產品名稱
+    "PeriodAmt": Amt, // 訂單金額
+    "PeriodType": "M", // 交易週期
+    "PeriodPoint": 14, // 交易週期時間點
+    "PeriodStartType": 2, // 檢查卡號模式（共三種）
+    "PeriodTimes": 12, // 交易期數
+    "PayerEmail": email, // 付款人電子信箱
+    "ReturnURL": ReturnURL, // 支付完成返回商店網址
+    "NotifyURL": NotifyURL, // 支付通知網址/每期授權結果通知
+    "BackURL": BackURL, // 支付取消返回商店網址
   }
 
-  console.log('===== getTradeInfo: data =====')
+  console.log("===== getTradeInfo: data =====")
   console.log(data)
 
   mpg_aes_encrypt = create_mpg_aes_encrypt(data)
 
-  console.log('===== getTradeInfo: mpg_aes_encrypt =====')
+  console.log("===== getTradeInfo: mpg_aes_encrypt =====")
   console.log(mpg_aes_encrypt)
 
   tradeInfo = {
-    'MerchantID': MerchantID, // 商店代號
-    'PostData': mpg_aes_encrypt, // 加密後參數
-    'PayGateWay': PayGateWay,
-    'MerchantOrderNo': data.MerOrderNo,
+    "MerchantID": MerchantID, // 商店代號
+    "PostData": mpg_aes_encrypt, // 加密後參數
+    "PayGateWay": PayGateWay,
+    "MerchantOrderNo": data.MerOrderNo,
   }
 
-  console.log('===== getTradeInfo: tradeInfo =====')
+  console.log("===== getTradeInfo: tradeInfo =====")
   console.log(tradeInfo)
 
   return tradeInfo
@@ -119,7 +119,7 @@ const orderController = {
         if (error) {
           console.log(error);
         } else {
-          console.log('Email sent: ' + info.response);
+          console.log("Email sent: " + info.response);
         }
       });
       CartItem
@@ -148,14 +148,14 @@ const orderController = {
       })
   },
   spgatewayCallback: (req, res) => {
-    console.log('===== spgatewayCallback =====')
+    console.log("===== spgatewayCallback =====")
     console.log(req.method)
     console.log(req.body)
-    console.log('==========')
+    console.log("==========")
 
     const data = JSON.parse(create_mpg_aes_decrypt(req.body.Period))
 
-    console.log('===== spgatewayCallback: create_mpg_aes_decrypt、data =====')
+    console.log("===== spgatewayCallback: create_mpg_aes_decrypt、data =====")
     console.log(data)
 
     if (data.Status === "SUCCESS") {

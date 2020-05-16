@@ -19,7 +19,7 @@ module.exports = (app) => {
       if (req.user.role === true) { return next() }
       return res.redirect("/")
     }
-    res.redirect('/my-account')
+    res.redirect("/my-account")
   }
   app.get("/", (req, res) => { res.redirect("/home") })
   app.get("/home", (req, res) => { res.render("home") })

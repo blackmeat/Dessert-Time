@@ -22,6 +22,6 @@ module.exports = {
     return String(a).substring(24)
   },
   date: function (a) {
-    return moment(a).format('YYYY-MM-DD HH:mm:ss')
+    return moment(a).format("YYYY-MM-DD HH:mm:ss")
   },
 }

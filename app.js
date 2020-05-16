@@ -1,7 +1,7 @@
 const express = require("express")
-const Handlebars = require('handlebars')
-const exhbs = require('express-handlebars');
-const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access')
+const Handlebars = require("handlebars")
+const exhbs = require("express-handlebars");
+const { allowInsecurePrototypeAccess } = require("@handlebars/allow-prototype-access")
 const passport = require("./config/passport")
 const bodyParser = require("body-parser")
 const session = require("express-session")
@@ -40,8 +40,8 @@ app.use(passport.session())
 
 // middleware
 app.use((req, res, next) => {
-  res.locals.success_messages = req.flash('success_messages')
-  res.locals.error_messages = req.flash('error_messages')
+  res.locals.success_messages = req.flash("success_messages")
+  res.locals.error_messages = req.flash("error_messages")
   res.locals.user = req.user
   next()
 })
