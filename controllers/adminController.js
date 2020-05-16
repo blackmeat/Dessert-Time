@@ -18,6 +18,9 @@ const adminController = {
         res.render("admin/products", { products })
       })
   },
+  addProduct: (req, res) => {
+    res.render("admin/product")
+  },
   getOrders: (req, res) => {
     Order
       .findAll({

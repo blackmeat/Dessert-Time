@@ -1,0 +1,32 @@
+<h1 class="mt-4">後台資料管理</h1>
+<div class="col-md-12 col-12 my-4" style="text-align: center;">
+  <a href="/admin/users">會員資料</a> ｜
+  <a href="/admin/products">商品資料</a> ｜
+  <a href="/admin/orders">訂單紀錄</a> ｜
+  <a href="/admin/payment">交易紀錄</a>
+</div>
+<div class="container add-product">
+  <div class="col-md-6 col-6 card-body cart-infomation">
+    <h4 style="text-align: center;">新增商品</h4>
+    <form action="/admin/products" method="POST">
+      <div class="form-label-group">
+        <label>商品名稱</label>
+        <input type="text" name="product_name" class="form-control" placeholder="請輸入商品名稱" required>
+      </div>
+      <div class="form-label-group">
+        <label>商品英文名稱</label>
+        <input type="text" name="password" class="form-control" placeholder="請輸入商品英文名稱" required>
+      </div>
+      <div class="form-label-group">
+        <label>商品金額</label>
+        <input type="number" name="price" class="form-control" placeholder="請輸入商品金額" min="1" required>
+      </div>
+      <div class="form-label-group">
+        <label>商品描述</label>
+        <textarea name="description" class="form-control" placeholder="請描述商品" required></textarea>
+      </div>
+      <br />
+      <button id="submit" class="btn btn-danger btn-block" type="submit">新增</button>
+    </form>
+  </div>
+</div>

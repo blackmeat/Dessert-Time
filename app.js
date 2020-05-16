@@ -27,6 +27,7 @@ app.use("/order/:id/checkout", static)
 app.use("/products", static)
 app.use("/users", static)
 app.use("/admin", static)
+app.use("/admin/products", static)
 
 // session
 const sessionParser = session({ secret: "12345", resave: false, saveUninitialized: false })
