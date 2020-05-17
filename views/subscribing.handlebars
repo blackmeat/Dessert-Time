@@ -24,11 +24,7 @@
           <h5>{{this.Product.name}}</h5>
           <h6>{{this.Product.english_name}}</h6>
           <p>方案到期：</p>
-          <form action="" method="POST">
-            <input type="text" name="MerchantID_" value=>
-            <input type="text" name="PostData_" value=>
-            <button type="submit" class="btn btn-outline-dark">取消訂閱</button>
-          </form>
+          <a class="btn btn-outline-dark" href="/users/cancel/{{this.id}}">取消訂閱</a>
         </div>
       </div>
       {{/each}}

@@ -75,9 +75,41 @@ function getTradeInfo(Amt, Desc, email) {
   return tradeInfo
 }
 
+function cancelTradeInfo(Amt, sn) {
+  data = {
+    "RespondType": "JSON", // 回傳格式
+    "TimeStamp": Date.now(), // 時間戳記
+    "Version": 1.0, // 串接程式版本
+    "MerchantOrderNo": sn, // 商店訂單編號
+    "Amt": Amt, // 取消授權金額
+    "IndexType": 1, // 單號類別 1為商店訂單編號 2為藍新金流交易單號
+  }
+
+  console.log("===== getTradeInfo: data =====")
+  console.log(data)
+
+  mpg_aes_encrypt = create_mpg_aes_encrypt(data)
+
+  console.log("===== getTradeInfo: mpg_aes_encrypt =====")
+  console.log(mpg_aes_encrypt)
+
+  tradeInfo = {
+    "MerchantID": MerchantID, // 商店代號
+    "PostData": mpg_aes_encrypt, // 加密後參數
+    "MerchantOrderNo": data.MerchantOrderNo,
+  }
+
+  console.log("===== getTradeInfo: tradeInfo =====")
+  console.log(tradeInfo)
+
+  return tradeInfo
+}
+
+
 module.exports = {
   genDataChain,
   create_mpg_aes_encrypt,
   create_mpg_aes_decrypt,
-  getTradeInfo
+  getTradeInfo,
+  cancelTradeInfo
 }

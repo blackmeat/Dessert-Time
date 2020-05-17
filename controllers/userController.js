@@ -70,8 +70,14 @@ const userController = {
       .then((orders) => {
         res.render("subscribing", { orders })
       })
+  },
+  getCancel: (req, res) => {
+    Order
+      .findByPk(req.params.id)
+      .then((order) => {
+        res.render("cancel", { order })
+      })
   }
-
 }
 
 module.exports = userController

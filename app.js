@@ -31,6 +31,7 @@ app.use(static)
 app.use("/order/:id/checkout", static)
 app.use("/products", static)
 app.use("/users", static)
+app.use("/users/cancel", static)
 app.use("/admin", static)
 app.use("/admin/products", static)
 

@@ -31,6 +31,7 @@ module.exports = (app) => {
   // User
   app.get("/users/orders", authenticated, userController.getOrders)
   app.get("/users/subscribing", authenticated, userController.getSubscribing)
+  app.get("/users/cancel/:id", authenticated, userController.getCancel)
   // Product 
   app.get("/products", productController.productsPage)
   app.get("/products/subscribe", productController.subscribePage)
