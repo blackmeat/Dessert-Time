@@ -76,33 +76,34 @@ function getTradeInfo(Amt, Desc, email) {
 }
 
 function cancelTradeInfo(Amt, sn) {
+  sn = sn + "_1"
   data = {
     "RespondType": "JSON", // 回傳格式
-    "TimeStamp": Date.now(), // 時間戳記
     "Version": 1.0, // 串接程式版本
-    "MerchantOrderNo": sn, // 商店訂單編號
     "Amt": Amt, // 取消授權金額
+    "MerchantOrderNo": sn, // 商店訂單編號
     "IndexType": 1, // 單號類別 1為商店訂單編號 2為藍新金流交易單號
+    "TimeStamp": Date.now(), // 時間戳記
   }
 
-  console.log("===== getTradeInfo: data =====")
+  console.log("===== getCancelInfo: data =====")
   console.log(data)
 
   mpg_aes_encrypt = create_mpg_aes_encrypt(data)
 
-  console.log("===== getTradeInfo: mpg_aes_encrypt =====")
+  console.log("===== getCancelTradeInfo: mpg_aes_encrypt =====")
   console.log(mpg_aes_encrypt)
 
-  tradeInfo = {
+  CancelInfo = {
     "MerchantID": MerchantID, // 商店代號
     "PostData": mpg_aes_encrypt, // 加密後參數
     "MerchantOrderNo": data.MerchantOrderNo,
   }
 
-  console.log("===== getTradeInfo: tradeInfo =====")
-  console.log(tradeInfo)
+  console.log("===== getCancelTradeInfo: cancelInfo =====")
+  console.log(CancelInfo)
 
-  return tradeInfo
+  return CancelInfo
 }
 
 

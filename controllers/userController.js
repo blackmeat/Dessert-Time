@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt-nodejs")
+const helpers = require("../helpers")
 const db = require("../models")
 const User = db.User
 const Order = db.Order
@@ -75,7 +76,9 @@ const userController = {
     Order
       .findByPk(req.params.id)
       .then((order) => {
-        res.render("cancel", { order })
+        console.log(order.sn)
+        const CancelInfo = helpers.cancelTradeInfo(order.amount, order.sn)
+        res.render("cancel", { order, CancelInfo })
       })
   }
 }
