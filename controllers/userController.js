@@ -76,9 +76,34 @@ const userController = {
     Order
       .findByPk(req.params.id)
       .then((order) => {
-        console.log(order.sn)
-        const CancelInfo = helpers.cancelTradeInfo(order.amount, order.sn)
-        res.render("cancel", { order, CancelInfo })
+        if (order.UserId !== req.user.id) {
+          return res.redirect("back")
+        }
+        return res.render("cancel", { order })
+      })
+  },
+  putCancel: (req, res) => {
+    Order
+      .findByPk(req.params.id)
+      .then((order) => {
+        order.update({
+          ...order,
+          payment_status: "等待取消確認"
+        }).then((order) => {
+          res.redirect("/users/orders")
+        })
+      })
+  },
+  putCancelRestore: (req, res) => {
+    Order
+      .findByPk(req.params.id)
+      .then((order) => {
+        order.update({
+          ...order,
+          payment_status: "完成付款"
+        }).then((order) => {
+          res.redirect("/users/orders")
+        })
       })
   }
 }

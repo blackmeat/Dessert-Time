@@ -34,11 +34,17 @@
           <td>${{this.amount}}/月</td>
           <td>{{this.payment_status}}</td>
           <td>
-            {{#ifNotCond this.payment_status "完成付款"}}
-            <a href="">立即付款</a>
-            {{else}}
+            {{#ifCond this.payment_status "完成付款"}}
             <a href="/order/{{this.id}}/checkout">查看訂單</a>
-            {{/ifNotCond}}
+            {{/ifCond}}
+            {{#ifCond this.payment_status "付款失敗"}}
+            <a href="/order/{{this.id}}/checkout">立即付款</a>
+            {{/ifCond}}
+            {{#ifCond this.payment_status "等待取消確認"}}
+            <form action="/users/restore/{{this.id}}?_method=PUT" method="POST">
+              <button class="btn btn-link" style="padding:0">恢復訂閱</button>
+            </form>
+            {{/ifCond}}
           </td>
         </tr>
         {{/each}}

@@ -18,7 +18,7 @@
     <br>
     <div class="col-md-12 row">
       {{#each orders}}
-      <div class="card col-md-3" style="border:1px solid black;border-radius:10px">
+      <div class="card col-md-4" style="border:1px solid black;border-radius:10px">
         <img src="{{this.Product.image}}" class="card-img-top" alt="方案圖片">
         <div class="card-body">
           <h5>{{this.Product.name}}</h5>
@@ -32,3 +32,9 @@
     </div>
   </div>
 </div>
+
+<style>
+  div.card {
+    margin: 0;
+  }
+</style>
