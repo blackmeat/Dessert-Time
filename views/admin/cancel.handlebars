@@ -10,10 +10,10 @@
     <tr>
       <th scope="col">訂單編號</th>
       <th scope="col">會員名稱</th>
-      <th scope="col">下單時間</th>
       <th scope="col">訂閱方案</th>
       <th scope="col">訂單金額</th>
       <th scope="col">訂單狀態</th>
+      <th scope="col">操作</th>
     </tr>
   </thead>
   <tbody>
@@ -21,10 +21,16 @@
     <tr>
       <td>{{this.sn}}</td>
       <td>{{this.User.name}}</td>
-      <td>{{date this.createdAt}}</td>
-      <td>{{this.Product.name}}</td>
+      <td>{{this.Product.name}} {{this.Product.english_name}}</td>
       <td>＄{{this.amount}}</td>
       <td>{{this.payment_status}}</td>
+      <td>
+        <form action="https://ccore.newebpay.com/API/CreditCard/Cancel" method="POST">
+          <input type="hidden" name="MerchantID_" value={{this.MerchantID}}>
+          <input type="hidden" name="PostData_" value={{this.PostData}}>
+          <button type="submit" class="btn btn-outline-dark btn-link" style="color: red;padding:0 5px">取消信用卡授權</button>
+        </form>
+      </td>
     </tr>
     {{/each}}
   </tbody>

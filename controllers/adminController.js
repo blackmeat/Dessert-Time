@@ -1,3 +1,4 @@
+const helpers = require("../helpers")
 const db = require("../models")
 const User = db.User
 const Order = db.Order
@@ -54,7 +55,24 @@ const adminController = {
         res.render("admin/orders", { orders })
       })
   },
-
+  getCancelOrders: (req, res) => {
+    Order
+      .findAll({
+        where: { payment_status: "等待取消確認" },
+        include: [Product, User]
+      })
+      .then((orders) => {
+        // 每筆資料都有MerchantID & PostData
+        orders = orders.map((order) => ({
+          ...order.dataValues,
+          MerchantID: helpers.cancelTradeInfo(order.amount, order.sn).MerchantID,
+          PostData: helpers.cancelTradeInfo(order.amount, order.sn).PostData
+        }))
+        console.log(orders)
+        return res.render("admin/cancel", { orders })
+      })
+  }
 }
 
 module.exports = adminController
+
