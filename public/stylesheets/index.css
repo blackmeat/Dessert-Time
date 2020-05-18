@@ -24,7 +24,7 @@ div#logo,div.step,div#choose,div.card {
   text-align: center;
 }
 div.step {
-  margin:0;
+  margin:40px 0 50px 0 ;
 }
 div.card {
   width: 20%;
@@ -57,6 +57,9 @@ div.card-body {
 div#option {
   margin-top: 80px;
 }
+div.cart {
+  margin: 0 auto auto auto;
+}
 div.cart-infomation {
   border:2px solid black;
   border-radius:5px;
@@ -68,13 +71,17 @@ div.form-label-group {
   margin:10px 0 10px 0;
 }
 div.card-product {
-  width:25%;
+  width: 25%;
 }
 div.choose-product {
-  margin:0;
+  margin: 0;
 }
 div.form {
   margin: 50px 0 0 0;
+}
+div.customer {
+  margin: auto;
+  margin-bottom: 30px;
 }
 
 
@@ -177,7 +184,7 @@ span.close {
 
 /* Button */
 button#step-now {
-  width: 24%;
+  width: 22%;
   margin:auto;
   padding:10px 0 20px 0;
   cursor:default;
@@ -187,7 +194,7 @@ button#step-now {
   background-color: rgb(236, 132, 40);
 }
 button#step {
-  width:24%;
+  width:22%;
   margin:auto;
   padding:10px 0 20px 0;
   cursor:default;
@@ -333,6 +340,7 @@ img#slogan {
 }
 img.subscribe-step {
   width: 60%;
+  height:220px;
 }
 
 /* A */
