@@ -1,24 +1,24 @@
 <div>
-  <h1 class="my-5" style="text-align: center;">如何開始訂閱？</h1>
+  <h1 class="how-to-start">如何開始訂閱？</h1>
   <div class="row">
-    <img class="subscribe" src="https://snacklips.com/wp-content/uploads/2019/09/landingpage_如何訂閱-01.png" alt="">
-    <img class="subscribe" src="https://snacklips.com/wp-content/uploads/2019/09/landingpage_如何訂閱-02.png" alt="">
-    <img class="subscribe" src="https://snacklips.com/wp-content/uploads/2019/09/landingpage_如何訂閱-03.png" alt="">
+    <img class="subscribe-step" src="https://snacklips.com/wp-content/uploads/2019/09/landingpage_如何訂閱-01.png" alt="">
+    <img class="subscribe-step" src="https://snacklips.com/wp-content/uploads/2019/09/landingpage_如何訂閱-02.png" alt="">
+    <img class="subscribe-step" src="https://snacklips.com/wp-content/uploads/2019/09/landingpage_如何訂閱-03.png" alt="">
   </div>
 </div>
 <div>
-  <h1 class="my-5">選擇適合的方案</h1>
-  <div class="row">
+  <h1 class="choose-product">選擇適合的方案</h1>
+  <div class="col-md-12 col-12 row choose-product">
     {{#each products}}
-    <div class="card">
-      <img class="card-img-top" src="{{this.image}}" width="200px" height="200px" alt="產品圖片">
+    <div class="card card-product">
+      <img class="card-img-top product-image" src="{{this.image}}" alt="產品圖片">
       <div class="card-body" id="{{this.name}}">
         <h1>{{this.name}}</h1>
         <small>{{this.english_name}}</small>
         <p id="price">NT${{this.price}}/每月</p>
-        <h5>{{textSub_a this.description}}</h5><br>
-        <h5>{{textSub_b this.description}}</h5><br>
-        <h5>{{textSub_c this.description}}</h5>
+        <h5 class="description">{{textSub_a this.description}}</h5><br>
+        <h5 class="description">{{textSub_b this.description}}</h5><br>
+        <h5 class="description">{{textSub_c this.description}}</h5>
       </div>
     </div>
     {{/each}}
