@@ -64,6 +64,12 @@ div.cart-infomation {
   border:2px solid black;
   border-radius:5px;
 }
+div.order-infomation {
+  margin-bottom: 30px;
+}
+div.product-infomation {
+  padding: 0px;
+}
 div.add-product {
   margin-left: 25%;
 }
@@ -151,6 +157,12 @@ h6#price {
   color:rgb(37, 36, 36);
   margin:10px 0 10px 0;
   text-align: right;
+}
+h6.product-infomation {
+  line-height: 140px;
+}
+h6.title {
+  color:rgb(141, 153, 165);
 }
 h1.how-to-start {
   margin: 50px 0;
@@ -313,6 +325,10 @@ h2.price {
 h4.account_title {
   text-align: center;
 }
+h6.product-infomation {
+  line-height: 30px;
+  font-size: 24px;
+}
 
 /* Div */
 div.card-product {
@@ -323,6 +339,10 @@ div.choose-product {
 }
 div.signin {
   margin-bottom: 60px;
+}
+div.product-infomation {
+  padding: 0;
+  text-align: center;
 }
 }
 
@@ -375,6 +395,9 @@ h4#explain {
 h4.account_title {
   text-align: center;
 }
+h6.product-infomation {
+  line-height: 20px;
+}
 
 /* Div */
 div.card-product {
@@ -385,6 +408,10 @@ div.choose-product {
 }
 div.signin {
   margin-bottom: 60px;
+}
+div.product-infomation {
+  padding: 0px;
+  text-align: center;
 }
 
 /* Button */

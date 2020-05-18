@@ -1,6 +1,6 @@
 {{!-- 步驟圖 --}}
-<div id="step">
-  <div class="row col-12 mt-5 mb-4">
+<div class="step">
+  <div class="col-md-12 col-12 row step">
     <button id="step" class="btn btn-primary" disabled>
       <small>Step 1</small><br>選擇方案
     </button>
@@ -36,50 +36,48 @@
   <h1 id="title" class="mt-5 mb-4">確認訂單成立</h1>
   {{/ifCond}}
   <h3 class="mb-3" style="font-weight: lighter;">訂單編號</h3>
-  <h5 style="font-weight: lighter">#{{order.sn}}</h5>
+  <h5>#{{order.sn}}</h5>
 </div>
 <div class="container">
   <div class="card-body cart-infomation">
     <h4>訂單資訊</h4>
     <hr>
-    <div class="col-12 row my-4">
-      <div class="col-6">
+    <div class="col-md-12 col-12 row my-4">
+      <div class="col-md-12 col-12">
         <h6>訂單狀態：已成立</h6>
         <h6>訂單日期：{{date order.createdAt}}</h6>
       </div>
     </div>
     <h4>訂閱方案</h4>
     <hr>
-    <table class="table table-borderless" style="line-height:15px">
-      <thead>
-        <tr>
-          <th scope="col">商品</th>
-          <th scope="col">價格</th>
-          <th scope="col">數量</th>
-          <th scope="col">小計</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td scope="row" style="color:rgb(56, 57, 58)">
-            <img src="{{order.Product.image}}" alt="商品圖片" width="150px" height="150px">
-            &nbsp&nbsp{{order.Product.name}} {{order.Product.english_name}}
-          </td>
-          <td style="line-height:140px;">NT$ {{order.amount}}元 / 月</td>
-          <td style="line-height:140px;">1</td>
-          <td style="line-height:140px;">NT$ {{order.amount}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="row my-5">
-      <div class="col-6">
+    <div class="col-md-12 col-12 row " style="margin:30px 0 60px 0;">
+      <div class="col-md-3 col-12 product-infomation">
+        <h6 class="title">方案名稱</h6>
+        <img src="{{order.Product.image}}" alt="商品圖片" width="140px" height="150px">
+      </div>
+      <div class="col-md-4 col-12 product-infomation">
+        <h6 style="color: transparent;">方案名稱</h6>
+        <h6 class="product-infomation">{{order.Product.name}}
+          {{order.Product.english_name}} x 1</h6>
+      </div>
+      <div class="col-md-2 col-12 product-infomation">
+        <h6 class="title">價格</h6>
+        <h6 class="product-infomation">NT${{order.amount}}</h6>
+      </div>
+      <div class="col-md-3 col-12 product-infomation">
+        <h6 class="title">總計</h6>
+        <h6 class="product-infomation">NT${{order.amount}}/月</h6>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-12 order-infomation">
         <h4>付款資訊</h4>
         <hr>
         <h6>付款方式：<span>信用卡定期定額</span></h6>
         <h6>付款狀態：<span>{{order.payment_status}}</span></h6>
         <h6>付款備註：</h6>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-12 order-infomation">
         <h4>送貨資訊</h4>
         <hr>
         <h6>送貨狀態：<span>{{order.shipping_status}}</span></h6>
@@ -87,14 +85,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-6">
+      <div class="col-md-6 col-12 order-infomation">
         <h4>訂購人資訊</h4>
         <hr>
         <h6>訂購人姓名：<span>{{order.subscriber_name}}</span></h6>
         <h6>訂購人電話：<span>{{order.subscriber_phone}}</span></h6>
         <h6>訂購人EMAIL：<span>{{order.subscriber_email}}</span></h6>
       </div>
-      <div class="col-6">
+      <div class="col-md-6 col-12 order-infomation">
         <h4>收件人資訊</h4>
         <hr>
         <h6>收件人姓名：<span>{{order.name}}</span></h6>
