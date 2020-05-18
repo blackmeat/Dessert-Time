@@ -20,8 +20,11 @@ img.product-image {
 }
 
 /* Div */
-div#logo,div#step,div#choose,div.card {
+div#logo,div.step,div#choose,div.card {
   text-align: center;
+}
+div.step {
+  margin:0;
 }
 div.card {
   width: 20%;
@@ -143,6 +146,9 @@ h1.how-to-start {
 h1.choose-product {
   margin:50px 0; 
 }
+h2.price {
+  font-size: 28px;
+}
 p#price {
   font-size: 20px;
 }
@@ -166,8 +172,9 @@ span.close {
 
 /* Button */
 button#step-now {
+  width: 24%;
   margin:auto;
-  padding:10px 80px 20px 80px;
+  padding:10px 0 20px 0;
   cursor:default;
   border-radius: 50px;
   border:none;
@@ -175,8 +182,9 @@ button#step-now {
   background-color: rgb(236, 132, 40);
 }
 button#step {
+  width:24%;
   margin:auto;
-  padding:10px 80px 20px 80px;
+  padding:10px 0 20px 0;
   cursor:default;
   border-radius: 50px;
   font-size: 20px;
@@ -287,6 +295,9 @@ h1.choose-product {
   margin:30px 0; 
   font-size: 28px;
 }
+h2.price {
+  font-size:20px;
+}
 
 /* Div */
 div.card-product {
@@ -322,6 +333,10 @@ a.btn-order {
   z-index:2;
   margin:195px 0 0 95px
 }
+a#option {
+  width:70%;
+  margin-bottom: 10px;
+}
 
 /* Font */
 h1.how-to-start {
@@ -332,6 +347,12 @@ h1.choose-product {
   margin:30px 0; 
   font-size: 28px;
 }
+h1#title {
+  font-size:30px;
+}
+h4#explain {
+  font-size:19px;
+}
 
 /* Div */
 div.card-product {
@@ -339,6 +360,17 @@ div.card-product {
 }
 div.choose-product {
   margin:0;
+}
+
+/* Button */
+button#step-now {
+  font-size: 16px;
+}
+button#step {
+  font-size: 16px;
+}
+button#buy {
+  padding:8px 80px 8px 80px;
 }
 }
 

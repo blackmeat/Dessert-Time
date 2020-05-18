@@ -1,6 +1,6 @@
 {{!-- 步驟圖 --}}
-<div id="step">
-  <div class="row col-12 mt-5 mb-4">
+<div class="step">
+  <div class="col-md-12 col-12 row mt-5 mb-4 step">
     <button id="step-now" class="btn btn-primary" disabled>
       <small>Step 1</small><br>選擇方案
     </button>
@@ -29,7 +29,7 @@
     <div class="card-body">
       <br>
       <br>
-      <h2>{{this.price}}元/月</h2>
+      <h2 class="price">{{this.price}}元/月</h2>
       <small id="{{name}}">每月自動扣款NT$ {{this.price}} 元</small>
       <br>
       {{#ifCond ../productId this.id}}
@@ -43,7 +43,7 @@
 <div class="mt-5" style="text-align: center;">
   <a class="btn mb-2 back" href="/products">
     <i class="fa fa-arrow-left" aria-hidden="true"></i>
-    上一步
+    上一頁
     <i class="fa fa-arrow-right" aria-hidden="true"></i>
   </a>
   <br>
@@ -52,19 +52,3 @@
     <button type="submit" class="btn btn-primary rounded-pill" id="buy">立即訂購</button>
   </form>
 </div>
-
-
-<script>
-  /*
-  function option() {
-    let parent = document.querySelector("#card_body")
-    let i = document.createElement("i")
-    if (!document.querySelector(".fa-check-circle")) {
-      i.setAttribute("class", "fa fa-check-circle")
-      parent.appendChild(i)
-    } else {
-      parent.removeChild(parent.children[3])
-    }
-  }
-  */
-</script>
