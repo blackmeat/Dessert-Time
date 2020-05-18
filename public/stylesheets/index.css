@@ -73,6 +73,9 @@ div.card-product {
 div.choose-product {
   margin:0;
 }
+div.form {
+  margin: 50px 0 0 0;
+}
 
 
 /* A */
@@ -121,12 +124,14 @@ h1#title {
 }
 h1#account_title {
   font-weight: bold;
-  color:rgb(1, 96, 134)
+  color: rgb(1, 96, 134);
+  margin-top: 50px;
+  margin-bottom: 40px;
 }
 h4#explain {
   color:rgb(236, 71, 11);
 }
-h4#account_title,h5 {
+h4.account_title,h5 {
   color:black
 }
 h5.description {
@@ -298,6 +303,9 @@ h1.choose-product {
 h2.price {
   font-size:20px;
 }
+h4.account_title {
+  text-align: center;
+}
 
 /* Div */
 div.card-product {
@@ -305,6 +313,9 @@ div.card-product {
 }
 div.choose-product {
   margin:0;
+}
+div.signin {
+  margin-bottom: 60px;
 }
 }
 
@@ -353,6 +364,9 @@ h1#title {
 h4#explain {
   font-size:19px;
 }
+h4.account_title {
+  text-align: center;
+}
 
 /* Div */
 div.card-product {
@@ -360,6 +374,9 @@ div.card-product {
 }
 div.choose-product {
   margin:0;
+}
+div.signin {
+  margin-bottom: 60px;
 }
 
 /* Button */

@@ -1,6 +1,6 @@
 {{#if cartId}}
-<div id="step">
-  <div class="row col-12 mt-5 mb-4">
+<div class="step">
+  <div class="col-md-12 col-12 row mt-5 mb-4 step">
     <button id="step" class="btn btn-primary" disabled>
       <small>Step 1</small><br>選擇方案
     </button>
@@ -17,41 +17,41 @@
   <h1 id="account_title" class="mt-5 mb-4">登入/註冊帳號</h1>
 </div>
 {{else}}
-<h1 id="account_title" class="mt-5 mb-4">登入/註冊帳號</h1>
+<h1 class="account_title">登入/註冊帳號</h1>
 {{/if}}
-<div class="row col-12 mt-5">
-  <div class="col-6">
-    <h4 id="account_title">登入</h4>
-    <form class="form-signin" action="/signin" method="POST" style="width: 100%;">
+<div class="col-md-12 col-12 row form">
+  <div class="col-md-6 col-12 signin">
+    <h4 class="account_title">登入</h4>
+    <form class="form-signin" action="/signin" method="POST">
       <div class="form-label-group my-3">
-        <label>電子郵件 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <label>電子郵件 <span>*</span></label>
         <input type="text" name="email" class="form-control" placeholder="請輸入電子郵件..." required autofocus>
       </div>
       <div class="form-label-group">
-        <label>密碼 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <label>密碼 <span>*</span></label>
         <input type="password" name="password" class="form-control" placeholder="請輸入密碼..." required>
       </div>
       <br />
       <button type="submit" class="btn btn-danger btn-block submit">立即登入</button>
     </form>
   </div>
-  <div class="col-6">
-    <h4 id="account_title">註冊</h4>
-    <form class="form-signup" action="/signup" method="POST" style="width: 100%;">
+  <div class="col-md-6 col-12 signup">
+    <h4 class="account_title">註冊</h4>
+    <form class="form-signup" action="/signup" method="POST">
       <div class="form-label-group mt-3">
-        <label>名稱 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <label>名稱 <span>*</span></label>
         <input type="text" name="name" class="form-control" placeholder="請輸入名稱" required>
       </div>
       <div class="form-label-group my-1">
-        <label>電子郵件 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <label>電子郵件 <span>*</span></label>
         <input type="text" name="email" class="form-control" placeholder="請輸入電子郵件" required>
       </div>
       <div class="form-label-group my-1">
-        <label>密碼 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <label>密碼 <span>*</span></label>
         <input type="password" name="password" class="form-control" placeholder="請輸入密碼" required>
       </div>
       <div class="form-label-group my-1">
-        <label>密碼驗證 <sup><i class="fa fa-asterisk" aria-hidden="true"></i></sup></label>
+        <label>密碼驗證 <span>*</span></label>
         <input type="password" name="passwordCheck" class="form-control" placeholder="再次輸入密碼" required>
       </div>
       <br />
