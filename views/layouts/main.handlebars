@@ -39,34 +39,36 @@
           <a class="nav-link" href="/">首頁</a>
           <a class="nav-link" href="/products">訂購零食箱</a>
         </div>
-        {{#ifCond user.role true}}
-        <a class="btn" href="/admin/users">
-          <i class="fa fa-user-o" aria-hidden="true">&nbsp網站後台管理</i>
-        </a>
-        {{/ifCond}}
-        <div class="dropdown">
-          <button class="btn btn-outline dropdown-toggle" type="button" data-toggle="dropdown">
-            <i class="fa fa-user">&nbsp會員專區</i>
-          </button>
-          <div class="dropdown-menu">
-            <h5 class="dropdown-header">會員專區</h5>
-            <div class="dropdown-divider"></div>
-            {{#if user}}
-            {{else}}
-            <a href="/my-account" class="dropdown-item">登入/註冊</a>
-            {{/if}}
-            <a href="/users/profile" class="dropdown-item">個人資料</a>
-            <a href="/users/orders" class="dropdown-item">訂單查詢</a>
-            <a href="/users/subscribing" class="dropdown-item">正在訂閱</a>
+        <ul class="nav">
+          {{#ifCond user.role true}}
+          <a class="btn" href="/admin/users">
+            <i class="fa fa-user-o" aria-hidden="true">&nbsp網站後台管理</i>
+          </a>
+          {{/ifCond}}
+          <div class="dropdown">
+            <button class="btn btn-outline dropdown-toggle" type="button" data-toggle="dropdown">
+              <i class="fa fa-user">&nbsp會員專區</i>
+            </button>
+            <div class="dropdown-menu">
+              <h5 class="dropdown-header">會員專區</h5>
+              <div class="dropdown-divider"></div>
+              {{#if user}}
+              {{else}}
+              <a href="/my-account" class="dropdown-item">登入/註冊</a>
+              {{/if}}
+              <a href="/users/profile" class="dropdown-item">個人資料</a>
+              <a href="/users/orders" class="dropdown-item">訂單查詢</a>
+              <a href="/users/subscribing" class="dropdown-item">正在訂閱</a>
+            </div>
           </div>
-        </div>
-        {{#if user}}
-        <form action="/logout" method="POST">
-          <button class="btn" type="submit">
-            <i class="fa fa-sign-out">&nbsp登出</i>
-          </button>
-        </form>
-        {{/if}}
+          {{#if user}}
+          <form action="/logout" method="POST">
+            <button class="btn" type="submit">
+              <i class="fa fa-sign-out">&nbsp登出</i>
+            </button>
+          </form>
+          {{/if}}
+        </ul>
       </nav>
       <hr id="navbar">
     </header>
