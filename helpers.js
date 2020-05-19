@@ -1,13 +1,13 @@
 const crypto = require("crypto")
 
-const URL = ""
+const URL = process.env.URL
 const MerchantID = process.env.MERCHANTID
 const HashKey = process.env.HASHKEY
 const HashIV = process.env.HASHIV
 const PayGateWay = "https://ccore.newebpay.com/MPG/period"
 const ReturnURL = URL + "/newebpay/callback?from=ReturnURL"
 const NotifyURL = URL + "/newebpay/callback?from=NotifyURL"
-const BackURL = URL + "/order"
+const BackURL = URL + "/users/orders"
 
 function genDataChain(TradeInfo) {
   let results = [];
