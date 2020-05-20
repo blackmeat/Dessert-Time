@@ -68,8 +68,27 @@ const adminController = {
           MerchantID: helpers.cancelTradeInfo(order.amount, order.sn).MerchantID,
           PostData: helpers.cancelTradeInfo(order.amount, order.sn).PostData
         }))
-        console.log(orders)
-        return res.render("admin/cancel", { orders })
+        if (req.params.id) {
+          Order
+            .findByPk(req.params.id)
+            .then((order) => {
+              return res.render("admin/cancel", { orders, order })
+            })
+        } else {
+          return res.render("admin/cancel", { orders })
+        }
+      })
+  },
+  putCancelOrders: (req, res) => {
+    Order
+      .findByPk(req.params.id)
+      .then((order) => {
+        order.update({
+          ...order,
+          payment_status: req.body.payment_status,
+        }).then((order) => {
+          res.redirect("/admin/cancel")
+        })
       })
   }
 }

@@ -34,6 +34,7 @@ app.use("/users", static)
 app.use("/users/cancel", static)
 app.use("/admin", static)
 app.use("/admin/products", static)
+app.use("/admin/cancel", static)
 
 // method-override
 app.use(methodOverride("_method"))

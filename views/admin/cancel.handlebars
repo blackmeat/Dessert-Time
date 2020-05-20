@@ -23,7 +23,17 @@
       <td>{{this.User.name}}</td>
       <td>{{this.Product.name}} {{this.Product.english_name}}</td>
       <td>＄{{this.amount}}</td>
-      <td>{{this.payment_status}}</td>
+      <td>
+        {{#ifCond ../order.id this.id}}
+        <form action="/admin/cancel/{{this.id}}?_method=PUT" method="POST">
+          <input type="text" name="payment_status" value="{{this.payment_status}}">
+          <button type="submit" class="btn btn-link" style="padding: 0;">完成</button>
+        </form>
+        {{else}}
+        {{this.payment_status}}
+        <a href="/admin/cancel/{{this.id}}">修改</a>
+        {{/ifCond}}
+      </td>
       <td>
         <form action="https://ccore.newebpay.com/API/CreditCard/Cancel" method="POST">
           <input type="hidden" name="MerchantID_" value={{this.MerchantID}}>
