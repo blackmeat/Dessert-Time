@@ -24,4 +24,7 @@ module.exports = {
   date: function (a) {
     return moment(a).format("YYYY-MM-DD HH:mm:ss")
   },
+  due: function (a) {
+    return moment(a).add(1, "years").format("YYYY年MM月")
+  }
 }
