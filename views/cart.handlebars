@@ -71,8 +71,14 @@
           <p>宅配</p>
           <hr>
           <h5>本月扣款金額</h5>
+          {{#ifCond product.name "體驗一箱"}}
+          <h6 id="price">NT${{product.price}}元 / 一箱</h6>
+          <small><span>* 立即結帳NT${{product.price}}元體驗當月零食箱</span></small>
+          {{else}}
           <h6 id="price">NT${{product.price}}元 / 每個月</h6>
           <small><span>* 之後每個月扣款金額為NT${{product.price}}元</span></small>
+          {{/ifCond}}
+
         </div>
       </div>
     </div>

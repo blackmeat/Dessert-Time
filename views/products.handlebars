@@ -15,7 +15,11 @@
       <div class="card-body" id="{{this.name}}">
         <h1>{{this.name}}</h1>
         <small>{{this.english_name}}</small>
+        {{#ifCond this.name "體驗一箱"}}
+        <p id="price">NT${{this.price}}</p>
+        {{else}}
         <p id="price">NT${{this.price}}/每月</p>
+        {{/ifCond}}
         <h5 class="description">{{textSub_a this.description}}</h5><br>
         <h5 class="description">{{textSub_b this.description}}</h5><br>
         <h5 class="description">{{textSub_c this.description}}</h5>

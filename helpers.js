@@ -33,7 +33,9 @@ function create_mpg_aes_decrypt(TradeInfo) {
 }
 
 function getTradeInfo(Amt, Desc, email) {
-
+  const PeriodType = Desc === "體驗一箱" ? "D" : "M"
+  const PeriodPoint = Desc === "體驗一箱" ? 2 : 14
+  const PeriodTime = Desc === "體驗一箱" ? 1 : 12
   console.log("===== getTradeInfo =====")
   console.log(Amt, Desc, email)
   console.log("==========")
@@ -44,10 +46,10 @@ function getTradeInfo(Amt, Desc, email) {
     "MerOrderNo": Date.now(), // 商店訂單編號
     "ProdDesc": Desc, // 產品名稱
     "PeriodAmt": Amt, // 訂單金額
-    "PeriodType": "D", // 交易週期
-    "PeriodPoint": 2, // 交易週期時間點
+    "PeriodType": PeriodType, // 交易週期
+    "PeriodPoint": PeriodPoint, // 交易週期時間點
     "PeriodStartType": 2, // 檢查卡號模式（共三種）
-    "PeriodTimes": 12, // 交易期數
+    "PeriodTimes": PeriodTime, // 交易期數
     "PayerEmail": email, // 付款人電子信箱
     "ReturnURL": ReturnURL, // 支付完成返回商店網址
     "NotifyURL": NotifyURL, // 支付通知網址/每期授權結果通知

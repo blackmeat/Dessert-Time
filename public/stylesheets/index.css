@@ -122,7 +122,7 @@ a.back {
 }
 a#option {
   padding: 0;
-  width:23%;
+  width:24%;
   height:320px;
   border-color:skyblue;
   background-color:white;
@@ -187,9 +187,6 @@ p#price {
 p#item {
   color:slategrey;
   margin:20px 0 20px 0 ;
-}
-small#體驗一箱 {
- color:transparent;
 }
 span {
   color:red;
@@ -329,6 +326,10 @@ a.btn-order {
   position:absolute;
   z-index:2;
   margin:265px 100px 100px 150px
+}
+a#option {
+  width:50%;
+  margin-bottom: 10px;
 }
 
 /* Font */

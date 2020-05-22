@@ -29,8 +29,14 @@
     <div class="card-body">
       <br>
       <br>
+      {{#ifCond this.name "體驗一箱"}}
+      <h2 class="price">{{this.price}}元</h2>
+      <small>體驗當月零食箱NT$ {{this.price}} 元</small>
+      {{else}}
       <h2 class="price">{{this.price}}元/月</h2>
-      <small id="{{name}}">每月自動扣款NT$ {{this.price}} 元</small>
+      <small>每月自動扣款NT$ {{this.price}} 元</small>
+      {{/ifCond}}
+
       <br>
       {{#ifCond ../productId this.id}}
       <i class="fa fa-check-circle"></i>
