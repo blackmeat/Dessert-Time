@@ -50,9 +50,8 @@ const cartController = {
         include: [Product]
       })
       .then((item) => {
-        const product = item.Product
-        if (req.session.cartId && product.id) {
-          res.render("cart", { product })
+        if (req.session.cartId && item) {
+          res.render("cart", { product: item.Product })
         } else {
           res.redirect("/products/subscribe")
         }

@@ -10,16 +10,15 @@ const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], {
-    host: "us-cdbr-east-06.cleardb.net",
-    dialect: "mysql",
-    pool: {
-      max: 50,
-      min: 0,
-      idle: 10000
-    },
-    timezone: "+08:00"
-  });
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+  // host: "us-cdbr-east-06.cleardb.net",
+  // dialect: "mysql",
+  // pool: {
+  //   max: 50,
+  //   min: 0,
+  //   idle: 10000
+  // },
+  // timezone: "+08:00"
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, {
     host: "localhost",
