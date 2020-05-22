@@ -5,9 +5,9 @@ const orderController = require("../controllers/orderController")
 const adminController = require("../controllers/adminController")
 const passport = require("../config/passport")
 
-
 module.exports = (app) => {
-  const authenticate = passport.authenticate("local", { failureRedirect: "/my-account", failureFlash: true })
+  const authenticate = passport.authenticate("local",
+    { failureRedirect: "/my-account", failureFlash: true })
   const authenticated = (req, res, next) => {
     if (req.isAuthenticated()) {
       return next()
@@ -29,6 +29,7 @@ module.exports = (app) => {
   app.post("/signin", authenticate, userController.signIn)
   app.post("/logout", userController.logout)
   // User
+  app.get("/users/profile", authenticated, userController.getProfile)
   app.get("/users/orders", authenticated, userController.getOrders)
   app.get("/users/subscribing", authenticated, userController.getSubscribing)
   app.get("/users/cancel/:id", authenticated, userController.getCancel)

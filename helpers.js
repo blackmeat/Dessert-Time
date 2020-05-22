@@ -1,6 +1,6 @@
 const crypto = require("crypto")
 
-const URL = "https://b29f1c59.ngrok.io"
+const URL = process.env.URL
 const MerchantID = process.env.MERCHANTID
 const HashKey = process.env.HASHKEY
 const HashIV = process.env.HASHIV

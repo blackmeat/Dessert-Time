@@ -55,6 +55,13 @@ const userController = {
     req.logout()
     res.redirect("/home")
   },
+  getProfile: (req, res) => {
+    User
+      .findByPk(req.user.id)
+      .then((user) => {
+        res.render("profile", { user })
+      })
+  },
   getOrders: (req, res) => {
     Order
       .findAll({ where: { UserId: req.user.id }, order: [["createdAt", "DESC"]] })
