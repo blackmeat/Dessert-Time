@@ -66,6 +66,15 @@ const adminController = {
     }
 
   },
+  deleteProduct: (req, res) => {
+    Product
+      .findByPk(req.params.id)
+      .then((product) => {
+        product.destroy().then((product) => {
+          res.redirect("/admin/products")
+        })
+      })
+  },
   getOrders: (req, res) => {
     Order
       .findAll({

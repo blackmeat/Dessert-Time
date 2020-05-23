@@ -14,6 +14,7 @@
       <th scope="col">英文名稱</th>
       <th scope="col">商品價格</th>
       <th scope="col">商品介紹</th>
+      <th scope="col">其他操作</th>
     </tr>
   </thead>
   <tbody>
@@ -24,6 +25,13 @@
       <td>{{this.english_name}}</td>
       <td>＄{{this.price}}/月</td>
       <td>{{this.description}}</td>
+      <td>
+        <form action="/admin/products/{{this.id}}?_method=DELETE" method="POST">
+          <button class="btn btn-link" type="submit" style="padding:0;color:red">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+          </button>
+        </form>
+      </td>
     </tr>
     {{/each}}
   </tbody>
