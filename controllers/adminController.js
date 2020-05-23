@@ -1,8 +1,10 @@
 const helpers = require("../helpers")
 const db = require("../models")
+const imgur = require("imgur-node-api")
 const User = db.User
 const Order = db.Order
 const Product = db.Product
+const IMGUR_CLIENT_ID = process.env.IMGUR_CLIENT_ID
 
 const adminController = {
   getUsers: (req, res) => {
@@ -35,15 +37,34 @@ const adminController = {
     res.render("admin/product")
   },
   postProduct: (req, res) => {
-    const { name, english_name, price, description } = req.body
-    Product.create({
-      name: name,
-      english_name: english_name,
-      price: price,
-      description: description
-    }).then((product) => {
-      res.redirect("/admin/products")
-    })
+    const { file } = req
+    if (file) {
+      imgur.setClientID(IMGUR_CLIENT_ID)
+      imgur.upload(file.path, (err, img) => {
+        return Product.create({
+          name: req.body.name,
+          english_name: req.body.english_name,
+          price: req.body.price,
+          description: req.body.description,
+          image: file ? img.data.link : null,
+        }).then((product) => {
+          req.flash("success message", "商品新增成功！")
+          res.redirect("/admin/products")
+        })
+      })
+    } else {
+      return Product.create({
+        name: req.body.name,
+        english_name: req.body.english_name,
+        price: req.body.price,
+        description: req.body.description,
+        image: null,
+      }).then((product) => {
+        req.flash("success message", "商品新增成功！")
+        res.redirect("/admin/products")
+      })
+    }
+
   },
   getOrders: (req, res) => {
     Order

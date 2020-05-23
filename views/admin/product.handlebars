@@ -8,7 +8,7 @@
 <div class="container add-product">
   <div class="col-md-6 col-6 card-body cart-infomation">
     <h4 style="text-align: center;">新增商品</h4>
-    <form action="/admin/products" method="POST">
+    <form action="/admin/products" method="POST" enctype="multipart/form-data">
       <div class="form-label-group">
         <label>商品名稱</label>
         <input type="text" name="name" class="form-control" placeholder="請輸入商品名稱" required>
@@ -24,6 +24,10 @@
       <div class="form-label-group">
         <label>商品描述</label>
         <textarea name="description" class="form-control" placeholder="請描述商品" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input type="file" class="form-control-file" id="image" name="image">
       </div>
       <br />
       <button id="submit" class="btn btn-danger btn-block" type="submit">新增</button>

@@ -4,6 +4,9 @@ const cartController = require("../controllers/cartController")
 const orderController = require("../controllers/orderController")
 const adminController = require("../controllers/adminController")
 const passport = require("../config/passport")
+const multer = require('multer')
+const upload = multer({ dest: 'temp/' })
+
 
 module.exports = (app) => {
   const authenticate = passport.authenticate("local",
@@ -51,7 +54,7 @@ module.exports = (app) => {
   app.put("/admin/users/:id", authenticatedAdmin, adminController.putUser)
   app.get("/admin/products", authenticatedAdmin, adminController.getProducts)
   app.get("/admin/products/add", authenticatedAdmin, adminController.addProduct)
-  app.post("/admin/products", authenticatedAdmin, adminController.postProduct)
+  app.post("/admin/products", authenticatedAdmin, upload.single('image'), adminController.postProduct)
   app.get("/admin/orders", authenticatedAdmin, adminController.getOrders)
   app.get("/admin/cancel", authenticatedAdmin, adminController.getCancelOrders)
   app.get("/admin/cancel/:id", authenticatedAdmin, adminController.getCancelOrders)
