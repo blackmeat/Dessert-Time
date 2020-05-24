@@ -41,13 +41,14 @@
         </div>
         <ul class="nav">
           {{#ifCond user.role true}}
-          <a class="btn" href="/admin/users">
-            <i class="fa fa-user-o" aria-hidden="true">&nbsp網站後台管理</i>
+          <a class="btn nav-item" href="/admin/users">
+            <i class="fa fa-user-o" aria-hidden="true">&nbsp;網站後台管理</i>
           </a>
           {{/ifCond}}
           <div class="dropdown">
-            <button class="btn btn-outline dropdown-toggle" type="button" data-toggle="dropdown">
-              <i class="fa fa-user">&nbsp會員專區</i>
+            <button class="btn btn-outline dropdown-toggle nav-item" type="button" data-toggle="dropdown"
+              style="padding:auto 0 auto 0 ">
+              <i class="fa fa-user">&nbsp;會員專區</i>
             </button>
             <div class="dropdown-menu">
               <h5 class="dropdown-header">會員專區</h5>
@@ -61,10 +62,13 @@
               <a href="/users/subscribing" class="dropdown-item">正在訂閱</a>
             </div>
           </div>
+          <a class="btn nav-item" href="/cart">
+            <i class="fa fa-shopping-cart"></i>&nbsp;<span class="badge badge-danger">0</span>
+          </a>
           {{#if user}}
           <form action="/logout" method="POST">
-            <button class="btn" type="submit">
-              <i class="fa fa-sign-out">&nbsp登出</i>
+            <button class="btn nav-item" type="submit">
+              <i class="fa fa-sign-out">&nbsp;登出</i>
             </button>
           </form>
           {{/if}}
