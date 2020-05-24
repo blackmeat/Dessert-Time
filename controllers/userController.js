@@ -62,6 +62,20 @@ const userController = {
         res.render("profile", { user })
       })
   },
+  putProfile: (req, res) => {
+    User
+      .findByPk(req.user.id)
+      .then((user) => {
+        user.update({
+          name: req.body.name,
+          email: req.body.email,
+        })
+          .then((user) => {
+            req.flash("success_messages", "成功修改會員資料！")
+            res.redirect("/users/profile")
+          })
+      })
+  },
   getOrders: (req, res) => {
     Order
       .findAll({ where: { UserId: req.user.id }, order: [["createdAt", "DESC"]] })

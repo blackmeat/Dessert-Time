@@ -1,5 +1,5 @@
 <div class="col-md-12 col-12 row">
-  <div class="col-md-3 col-12" style="text-align: center;padding:0 5px">
+  <div class="col-md-3 col-12" style="text-align: center;padding:0 5px 10px 0">
     <ul class="list-group list-group-flush">
       <h4>會員專區</h4>
       <li class="list-group-item">
@@ -13,8 +13,21 @@
       </li>
     </ul>
   </div>
-  <div class="col-md-9 col-12">
+  <div class="col-md-6 col-12" style="margin: 0 auto;">
     <h1>個人資料</h1>
-
+    <form class="form-put-profile" action="/users/profile?_method=PUT" method="POST">
+      <div class="form-label-group my-3">
+        <label>會員姓名 <span>*</span></label>
+        <input type="text" name="name" class="form-control" value="{{user.name}}" required>
+      </div>
+      <div class="form-label-group">
+        <label>電子郵件 <span>*</span></label>
+        <input type="email" name="email" class="form-control" value="{{user.email}}" required>
+      </div>
+      <br />
+      <div style="text-align: center;">
+        <button type="submit" class="btn btn-danger">儲存修改</button>
+      </div>
+    </form>
   </div>
 </div>

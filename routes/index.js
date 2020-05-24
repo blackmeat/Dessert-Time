@@ -33,6 +33,7 @@ module.exports = (app) => {
   app.post("/logout", userController.logout)
   // User
   app.get("/users/profile", authenticated, userController.getProfile)
+  app.put("/users/profile", authenticated, userController.putProfile)
   app.get("/users/orders", authenticated, userController.getOrders)
   app.get("/users/subscribing", authenticated, userController.getSubscribing)
   app.get("/users/cancel/:id", authenticated, userController.getCancel)
