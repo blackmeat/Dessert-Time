@@ -62,9 +62,15 @@
               <a href="/users/subscribing" class="dropdown-item">正在訂閱</a>
             </div>
           </div>
+          {{#if cartItem}}
+          <a class="btn nav-item" href="/cart">
+            <i class="fa fa-shopping-cart"></i>&nbsp;<span class="badge badge-danger">1</span>
+          </a>
+          {{else}}
           <a class="btn nav-item" href="/cart">
             <i class="fa fa-shopping-cart"></i>&nbsp;<span class="badge badge-danger">0</span>
           </a>
+          {{/if}}
           {{#if user}}
           <form action="/logout" method="POST">
             <button class="btn nav-item" type="submit">

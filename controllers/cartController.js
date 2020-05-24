@@ -33,6 +33,7 @@ const cartController = {
                   quantity: 1,
                 }).then((cartItem) => {
                   req.session.cartId = cart.id
+                  req.session.cartItem = cartItem
                   return req.session.save(() => {
                     res.redirect("/cart")
                   })
@@ -42,7 +43,7 @@ const cartController = {
       });
   },
   getCart: (req, res) => {
-    console.log(req.session.cartId)
+    console.log(req.session)
     console.log(req.user)
     CartItem
       .findOne({

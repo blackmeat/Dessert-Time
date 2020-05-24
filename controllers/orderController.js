@@ -49,6 +49,7 @@ const orderController = {
       CartItem
         .destroy({ where: { CartId: req.session.cartId } })
         .then((cartitem) => {
+          req.session.cartItem = null
           return res.redirect(`/order/${order.id}/checkout`)
         })
     })
