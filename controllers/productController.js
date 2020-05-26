@@ -19,6 +19,9 @@ const productController = {
       .then((products) => {
         res.render("subscribe", { products, productId })
       })
+  },
+  explainPage: (req, res) => {
+    res.render("explain")
   }
 }
 

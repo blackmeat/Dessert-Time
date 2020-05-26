@@ -21,6 +21,10 @@ img.product-image {
 img.dessert-order {
   width:370px;
 }
+img.explain {
+  width: 550px;
+  height: 550px;
+}
 
 /* Div */
 div#logo,div.step,div#choose,div.card,div.dessert-order {
@@ -106,6 +110,22 @@ div.earth {
   text-align: center;
   margin-right:15px
 }
+div.explain-container{
+  text-align: center;
+  margin-top:30px;
+}
+div.explain {
+  background-color:rgb(248, 222, 166);
+  width:66%;
+  margin-left:17%;
+  border-radius:10px;
+  margin-bottom:80px;
+  padding-bottom:30px
+}
+div.carousel {
+  width: 50%;
+  margin-left:25%;
+}
 
 /* A */
 a#choose_button {
@@ -146,15 +166,35 @@ a.nav-item {
   padding-right: 3px;
 }
 a.to-products {
-  background-color:rgb(243, 152, 48);
+  background-color:rgb(252, 120, 79);
   color:white;
   border-radius:10px;
   padding:5px 30px;
   font-size: 18px;
 }
+a.to-products:hover {
+  background-color: rgb(241, 22, 22);
+  color:white;
+}
 a.dessert-order {
   color:rgb(240, 174, 31);
 }
+a.dessert-order:hover {
+  color:rgb(236, 66, 24)
+}
+a.explain {
+  background-color: rgb(247, 184, 11);
+  color:white;
+  padding:20px 50px;
+  font-size:18px;
+}
+a.order {
+  padding:10px 70px;
+  background-color:rgb(253, 154, 124);
+  color:white;
+  font-size:20px;
+}
+
 /* Font */
 h1 {
   font-weight: normal;
@@ -211,6 +251,12 @@ p#price {
 p#item {
   color:slategrey;
   margin:20px 0 20px 0 ;
+}
+p.explain {
+  line-height: 30px;
+}
+p.carousel {
+  font-size: 25px;
 }
 span {
   color:red;
@@ -270,6 +316,11 @@ i.fa-asterisk {
   color:orangered;
   font-size:smaller;
 }
+i.fa-question-circle-o {
+  font-size:60px;
+  margin-bottom:20px;
+  color:rgb(247, 184, 11)
+}
 
 /* Input */
 input.customer {
@@ -325,6 +376,12 @@ footer {
   text-align: center;
 }
 
+@media (min-width: 768px) and (max-width: 992px) {
+  img.explain {
+    width: 380px;
+    height: 380px;
+  }
+}
 
 @media (min-width: 576px) and (max-width: 767.98px) {
 /* Image */
@@ -344,6 +401,10 @@ img.subscribe-step {
 }
 img.dessert-order {
   width:260px;
+}
+img.explain {
+  width: 350px;
+  height: 350px;
 }
 
 /* A */
@@ -372,6 +433,9 @@ h1.choose-product {
   margin:30px 0; 
   font-size: 28px;
 }
+h1.explain {
+  font-size: 32px;
+}
 h2.price {
   font-size:20px;
 }
@@ -381,6 +445,9 @@ h4.account_title {
 h6.product-infomation {
   line-height: 30px;
   font-size: 24px;
+}
+p.carousel {
+  font-size: 22px;
 }
 
 /* Div */
@@ -396,6 +463,14 @@ div.signin {
 div.product-infomation {
   padding: 0;
   text-align: center;
+}
+div.explain {
+  width: 80%;
+  margin-left: 10%;
+}
+div.carousel {
+  width: 70%;
+  margin-left: 15%;
 }
 
 /* Ul */
@@ -420,6 +495,10 @@ img.subscribe-step {
 img.dessert-order {
   width:200px;
 }
+img.explain {
+  width: 250px; 
+  height: 250px;
+}
 
 /* A */
 a.btn-order {
@@ -440,6 +519,10 @@ a.to-products {
 a.dessert-order {
   font-size: 14px;
 }
+a.explain {
+  padding: 10px 30px;
+  font-size: 16px;
+}
 
 /* Font */
 h1.how-to-start {
@@ -453,6 +536,9 @@ h1.choose-product {
 h1#title {
   font-size:30px;
 }
+h1.explain {
+  font-size: 28px;
+}
 h4#explain {
   font-size:19px;
 }
@@ -465,6 +551,14 @@ h6.product-infomation {
 h6.dessert-order {
   font-size: 12px;
 }
+p.explain {
+  line-height: 20px;
+  font-size: 14px;
+}
+p.carousel {
+  font-size: 20px;
+}
+
 /* Div */
 div.card-product {
   width:70%;
@@ -478,6 +572,14 @@ div.signin {
 div.product-infomation {
   padding: 0px;
   text-align: center;
+}
+div.explain {
+  width: 90%;
+  margin-left: 5%;
+}
+div.carousel {
+  width: 90%;
+  margin-left: 5%;
 }
 
 /* Button */

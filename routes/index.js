@@ -41,6 +41,7 @@ module.exports = (app) => {
   app.put("/users/restore/:id", authenticated, userController.putCancelRestore)
   // Product 
   app.get("/products", productController.productsPage)
+  app.get("/products/explain", productController.explainPage)
   app.get("/products/subscribe", productController.subscribePage)
   // Cart 
   app.get("/cart", authenticated, cartController.getCart)
