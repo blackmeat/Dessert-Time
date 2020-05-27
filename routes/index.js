@@ -24,33 +24,41 @@ module.exports = (app) => {
     }
     res.redirect("/my-account")
   }
+  // Home
   app.get("/", (req, res) => { res.redirect("/home") })
   app.get("/home", (req, res) => { res.render("home") })
+
   // Login
   app.get("/my-account", userController.getMyAccount)
   app.post("/signup", userController.signUp)
   app.post("/signin", authenticate, userController.signIn)
   app.post("/logout", userController.logout)
+
   // User
   app.get("/users/profile", authenticated, userController.getProfile)
   app.put("/users/profile", authenticated, userController.putProfile)
   app.get("/users/orders", authenticated, userController.getOrders)
   app.get("/users/subscribing", authenticated, userController.getSubscribing)
-  app.get("/users/cancel/:id", authenticated, userController.getCancel)
-  app.put("/users/cancel/:id", authenticated, userController.putCancel)
-  app.put("/users/restore/:id", authenticated, userController.putCancelRestore)
+  app.get("/users/:id/cancel", authenticated, userController.getCancel)
+  app.put("/users/:id/cancel", authenticated, userController.putCancel)
+  // app.put("/users/restore/:id", authenticated, userController.putCancelRestore)
+
   // Product 
   app.get("/products", productController.productsPage)
   app.get("/products/explain", productController.explainPage)
   app.get("/products/subscribe", productController.subscribePage)
+
   // Cart 
   app.get("/cart", authenticated, cartController.getCart)
   app.post("/cart", cartController.postCart)
+
   // Order
   app.post("/order", authenticated, orderController.createOrder)
   app.get("/order/:id/checkout", authenticated, orderController.checkout)
+
   // NewebPay
   app.post("/newebpay/callback", orderController.newebpayCallback)
+
   // Admin
   app.get("/admin/users", authenticatedAdmin, adminController.getUsers)
   app.put("/admin/users/:id", authenticatedAdmin, adminController.putUser)

@@ -27,7 +27,7 @@
           <h6>{{this.Product.english_name}}</h6>
           <h6>{{date this.createdAt}}</h6>
           <p>方案到期：{{due this.createdAt}}</p>
-          <a class="btn btn-outline-dark" href="/users/cancel/{{this.id}}">取消訂閱</a>
+          <a class="btn btn-outline-dark" href="/users/{{this.id}}/cancel">取消訂閱</a>
         </div>
       </div>
       {{/ifCond}}

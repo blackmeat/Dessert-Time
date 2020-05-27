@@ -45,9 +45,11 @@
               <a href="/order/{{this.id}}/checkout">立即付款</a>
               {{/ifCond}}
               {{#ifCond this.payment_status "等待取消確認"}}
+              <!--
               <form action="/users/restore/{{this.id}}?_method=PUT" method="POST">
                 <button class="btn btn-link" style="padding:0">恢復訂閱</button>
               </form>
+              -->
               {{/ifCond}}
             </td>
           </tr>

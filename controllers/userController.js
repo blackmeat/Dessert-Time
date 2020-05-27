@@ -7,7 +7,6 @@ const Product = db.Product
 
 const userController = {
   getMyAccount: (req, res) => {
-    console.log(req.session)
     let cartId = ""
     if (req.session.cartId) {
       cartId = req.session.cartId
@@ -111,6 +110,7 @@ const userController = {
           ...order,
           payment_status: "等待取消確認"
         }).then((order) => {
+          req.flash("success_messages", "正在等待取消確認，請確認訂單狀態！")
           res.redirect("/users/orders")
         })
       })

@@ -43,6 +43,7 @@ const cartController = {
       });
   },
   getCart: (req, res) => {
+    console.log("===== Session & User Information =====")
     console.log(req.session)
     console.log(req.user)
     CartItem

@@ -86,7 +86,7 @@ const orderController = {
     console.log(data)
 
     const { Result } = data
-    console.log(typeof Result.AuthTime)
+
     Order
       .findOne({ where: { sn: Result.MerchantOrderNo } })
       .then(order => {
