@@ -35,7 +35,7 @@
             <td>${{this.amount}}/月</td>
             <td>{{this.payment_status}}</td>
             <td>
-              {{#ifCond this.payment_status "完成付款"}}
+              {{#ifCond this.payment_status "首期授權成功"}}
               <a href="/order/{{this.id}}/checkout">查看訂單</a>
               {{/ifCond}}
               {{#ifCond this.payment_status "付款失敗"}}

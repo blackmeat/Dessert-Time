@@ -86,7 +86,7 @@ const userController = {
   getSubscribing: (req, res) => {
     Order
       .findAll({
-        where: { payment_status: "完成付款" },
+        where: { payment_status: "首期授權成功" },
         include: [Product]
       })
       .then((orders) => {
@@ -121,7 +121,7 @@ const userController = {
       .then((order) => {
         order.update({
           ...order,
-          payment_status: "完成付款"
+          payment_status: "首期授權成功"
         }).then((order) => {
           res.redirect("/users/orders")
         })

@@ -93,7 +93,7 @@ const orderController = {
         if (data.Status === "SUCCESS") {
           order.update({
             ...order,
-            payment_status: "完成付款",
+            payment_status: "首期授權成功",
           })
             .then(order => {
               Payment.create({

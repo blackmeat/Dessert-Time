@@ -10,7 +10,7 @@
     <button id="step" class="btn btn-primary" disabled>
       <small>Step 3</small><br>收件資訊
     </button>
-    {{#ifNotCond order.payment_status "完成付款"}}
+    {{#ifNotCond order.payment_status "首期授權成功"}}
     <button id="step-now" class="btn btn-primary" disabled>
       <small>Step 4</small><br>前往結帳
     </button>
@@ -20,8 +20,8 @@
     </button>
     {{/ifNotCond}}
   </div>
-  {{#ifCond order.payment_status "完成付款"}}
-  <h1 id="title" class="mt-5 mb-4">完成付款<br>
+  {{#ifCond order.payment_status "首期授權成功"}}
+  <h1 id="title" class="mt-5 mb-4">首期授權成功<br>
     <i class="fa fa-check-circle"></i>
   </h1>
   {{/ifCond}}
@@ -103,7 +103,7 @@
     </div>
   </div>
 </div>
-{{#ifNotCond order.payment_status "完成付款"}}
+{{#ifNotCond order.payment_status "首期授權成功"}}
 <div style="text-align: center;">
   <form name="Newebpay" action="{{tradeInfo.PayGateWay}}" method="POST">
     <input type="hidden" name="MerchantID_" value="{{tradeInfo.MerchantID}}"><br>
