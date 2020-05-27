@@ -96,7 +96,7 @@ const userController = {
   getSubscribing: (req, res) => {
     Order
       .findAll({
-        where: { payment_status: "首期授權成功" },
+        where: { payment_status: "首期授權成功", UserId: req.user.id },
         include: [Product]
       })
       .then((orders) => {
