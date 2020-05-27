@@ -46,19 +46,22 @@ const cartController = {
     console.log("===== Session & User Information =====")
     console.log(req.session)
     console.log(req.user)
-    CartItem
-      .findOne({
-        where: { CartId: req.session.cartId },
-        include: [Product]
-      })
-      .then((item) => {
-        if (req.session.cartId && item) {
-          res.render("cart", { product: item.Product })
-        } else {
-          res.redirect("/products/subscribe")
-        }
-      })
-
+    if (!req.session.cartId) {
+      res.redirect("/products/subscribe")
+    } else {
+      CartItem
+        .findOne({
+          where: { CartId: req.session.cartId },
+          include: [Product]
+        })
+        .then((item) => {
+          if (item) {
+            res.render("cart", { product: item.Product })
+          } else {
+            res.redirect("/products/subscribe")
+          }
+        })
+    }
   }
 }
 

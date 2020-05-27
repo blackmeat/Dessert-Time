@@ -4,6 +4,7 @@ const db = require("../models")
 const User = db.User
 const Order = db.Order
 const Product = db.Product
+const CartItem = db.CartItem
 
 const userController = {
   getMyAccount: (req, res) => {
@@ -51,8 +52,18 @@ const userController = {
   },
   logout: (req, res) => {
     req.flash("success_messages", "已經成功登出")
-    req.logout()
-    res.redirect("/home")
+    if (req.session.cartId) {
+      CartItem
+        .destroy({ where: { CartId: req.session.cartId } })
+        .then((item) => {
+          req.session.cartItem = null
+          req.logout()
+          res.redirect("/home")
+        })
+    } else {
+      req.logout()
+      res.redirect("/home")
+    }
   },
   getProfile: (req, res) => {
     User
