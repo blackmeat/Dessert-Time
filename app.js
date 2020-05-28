@@ -26,15 +26,8 @@ app.set("view engine", "handlebars")
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // static file
-const static = express.static("public")
-app.use(static)
-app.use("/order/:id/checkout", static)
-app.use("/products", static)
-app.use("/users", static)
-app.use("/users/:id", static)
-app.use("/admin", static)
-app.use("/admin/products", static)
-app.use("/admin/cancel", static)
+app.use("/", express.static("public"))
+
 
 // method-override
 app.use(methodOverride("_method"))
