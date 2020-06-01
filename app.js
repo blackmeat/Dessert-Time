@@ -57,3 +57,5 @@ app.listen(port, () => {
 
 // load routes
 require("./routes/index.js")(app)
+
+module.exports = app
