@@ -56,6 +56,6 @@ app.listen(port, () => {
 })
 
 // load routes
-require("./routes/index.js")(app)
+require("./routes/index.js")(app, passport)
 
 module.exports = app

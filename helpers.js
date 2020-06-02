@@ -108,11 +108,20 @@ function cancelTradeInfo(Amt, sn) {
   return CancelInfo
 }
 
+function ensureAuthenticated(req) {
+  return req.isAuthenticated();
+}
+
+function getUser(req) {
+  return req.user;
+}
 
 module.exports = {
   genDataChain,
   create_mpg_aes_encrypt,
   create_mpg_aes_decrypt,
   getTradeInfo,
-  cancelTradeInfo
+  cancelTradeInfo,
+  ensureAuthenticated,
+  getUser,
 }

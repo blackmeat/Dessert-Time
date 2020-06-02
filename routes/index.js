@@ -3,23 +3,21 @@ const productController = require("../controllers/productController")
 const cartController = require("../controllers/cartController")
 const orderController = require("../controllers/orderController")
 const adminController = require("../controllers/adminController")
-const passport = require("../config/passport")
+const helpers = require("../helpers")
 const multer = require('multer')
 const upload = multer({ dest: 'temp/' })
 
 
-module.exports = (app) => {
-  const authenticate = passport.authenticate("local",
-    { failureRedirect: "/my-account", failureFlash: true })
+module.exports = (app, passport) => {
   const authenticated = (req, res, next) => {
-    if (req.isAuthenticated()) {
+    if (helpers.ensureAuthenticated(req)) {
       return next()
     }
     res.redirect("/my-account")
   }
   const authenticatedAdmin = (req, res, next) => {
-    if (req.isAuthenticated()) {
-      if (req.user.role === true) { return next() }
+    if (helpers.ensureAuthenticated(req)) {
+      if (helpers.getUser(req).role === true) { return next() }
       return res.redirect("/")
     }
     res.redirect("/my-account")
@@ -31,11 +29,12 @@ module.exports = (app) => {
   // Login
   app.get("/my-account", userController.getMyAccount)
   app.post("/signup", userController.signUp)
-  app.post("/signin", authenticate, userController.signIn)
+  app.post("/signin", passport.authenticate("local",
+    { failureRedirect: "/my-account", failureFlash: true }), userController.signIn)
   app.post("/logout", userController.logout)
 
   // User
-  app.get("/users/profile", authenticated, userController.getProfile)
+  app.get("/users/:id/profile", authenticated, userController.getProfile)
   app.put("/users/profile", authenticated, userController.putProfile)
   app.get("/users/orders", authenticated, userController.getOrders)
   app.get("/users/subscribing", authenticated, userController.getSubscribing)
