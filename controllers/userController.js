@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt-nodejs")
+const bcrypt = require("bcryptjs")
 const helpers = require("../helpers")
 const db = require("../models")
 const User = db.User
