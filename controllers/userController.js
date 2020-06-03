@@ -66,8 +66,11 @@ const userController = {
     }
   },
   getProfile: (req, res) => {
+    if (Number(req.params.id) !== helpers.getUser(req).id) {
+      return res.redirect('back')
+    }
     User
-      .findByPk(req.user.id)
+      .findByPk(req.params.id)
       .then((user) => {
         res.render("profile", { user })
       })
