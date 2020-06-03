@@ -77,7 +77,7 @@ const userController = {
   },
   putProfile: (req, res) => {
     User
-      .findByPk(req.user.id)
+      .findByPk(req.params.id)
       .then((user) => {
         user.update({
           name: req.body.name,
@@ -85,13 +85,16 @@ const userController = {
         })
           .then((user) => {
             req.flash("success_messages", "成功修改會員資料！")
-            res.redirect("/users/profile")
+            res.redirect(`/users/${user.id}/profile`)
           })
       })
   },
   getOrders: (req, res) => {
     Order
-      .findAll({ where: { UserId: req.user.id }, order: [["createdAt", "DESC"]] })
+      .findAll({
+        where: { UserId: helpers.getUser(req).id },
+        order: [["createdAt", "DESC"]]
+      })
       .then((orders) => {
         res.render("orders", { orders })
       })
@@ -99,7 +102,7 @@ const userController = {
   getSubscribing: (req, res) => {
     Order
       .findAll({
-        where: { payment_status: "首期授權成功", UserId: req.user.id },
+        where: { payment_status: "首期授權成功", UserId: helpers.getUser(req).id },
         include: [Product]
       })
       .then((orders) => {
@@ -110,7 +113,7 @@ const userController = {
     Order
       .findByPk(req.params.id)
       .then((order) => {
-        if (order.UserId !== req.user.id) {
+        if (order.UserId !== helpers.getUser(req).id) {
           return res.redirect("back")
         }
         return res.render("cancel", { order })
