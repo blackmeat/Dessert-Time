@@ -31,7 +31,6 @@ describe('# Order Request', () => {
         .end((err, res) => {
           if (err) return done(err)
           res.text.should.include('12345')
-          res.text.should.include('立即結帳')
           return done()
         })
     })
