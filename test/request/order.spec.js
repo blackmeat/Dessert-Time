@@ -42,7 +42,6 @@ describe('# Order Request', () => {
         .set('Accept', 'application/json')
         .expect(302)
         .end((err, res) => {
-          console.log(res)
           if (err) return done(err)
           done()
         })
