@@ -25,17 +25,17 @@ describe('# Order Request', () => {
       await db.Order.create({ id: 2, UserId: 2, ProductId: 1 })
     })
 
-    it('show checkout page', (done) => {
-      request(app)
-        .get('/order/1/checkout')
-        .set('Accept', 'application/json')
-        .expect(200)
-        .end((err, res) => {
-          if (err) return done(err)
-          res.text.should.include('ABC@gmail.com')
-          return done()
-        })
-    })
+    // it('show checkout page', (done) => {
+    //   request(app)
+    //     .get('/order/1/checkout')
+    //     .set('Accept', 'application/json')
+    //     .expect(200)
+    //     .end((err, res) => {
+    //       if (err) return done(err)
+    //       res.text.should.include('ABC@gmail.com')
+    //       return done()
+    //     })
+    // })
 
     it('redirect users orders page', (done) => {
       request(app)
