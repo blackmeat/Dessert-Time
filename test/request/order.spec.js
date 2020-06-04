@@ -24,7 +24,6 @@ describe('# Order Request', () => {
     })
 
     it('show checkout page', (done) => {
-      this.timeout(10000)
       request(app)
         .get('/order/1/checkout')
         .set('Accept', 'application/json')
@@ -33,7 +32,7 @@ describe('# Order Request', () => {
           if (err) return done(err)
           res.text.should.include('12345')
           res.text.should.include('立即結帳')
-          done()
+          return done()
         })
     })
 
