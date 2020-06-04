@@ -7,9 +7,9 @@ var app = require('../../app')
 var helpers = require('../../helpers')
 const db = require('../../models')
 
-describe('# user request', () => {
+describe('# User Request', () => {
 
-  context('# profile', () => {
+  context('# GET /users/:id/profile', () => {
     before(async () => {
       this.ensureAuthenticated = sinon.stub(
         helpers, 'ensureAuthenticated'
@@ -51,7 +51,40 @@ describe('# user request', () => {
     })
   })
 
-  context('# orders', () => {
+  context('# POST /users/:id/profile', () => {
+    before(async () => {
+      this.ensureAuthenticated = sinon.stub(
+        helpers, 'ensureAuthenticated'
+      ).returns(true)
+      this.getUser = sinon.stub(
+        helpers, 'getUser'
+      ).returns({ id: 1 })
+      await db.User.create({})
+    })
+
+    it('update users profile', (done) => {
+      request(app)
+        .post('/users/1/profile')
+        .send('name=ABC&email=ABC@gmail.com')
+        .set('Accept', 'application/json')
+        .expect(302)
+        .end((err, res) => {
+          if (err) return done(err)
+          db.User.findByPk(1).then((user) => {
+            user.name.should.be.equal('ABC')
+            user.email.should.be.equal('ABC@gmail.com')
+            return done()
+          })
+        })
+    })
+
+    after(async () => {
+      this.ensureAuthenticated.restore()
+      this.getUser.restore()
+      await db.User.destroy({ where: {}, truncate: true })
+    })
+  })
+  context('# GET /users/orders', () => {
     before(async () => {
       this.ensureAuthenticated = sinon.stub(
         helpers, 'ensureAuthenticated'
@@ -70,7 +103,6 @@ describe('# user request', () => {
         .expect(200)
         .end((err, res) => {
           if (err) return done(err)
-          console.log(res.text)
           res.text.should.include('12345678')
           done()
         })
@@ -84,7 +116,7 @@ describe('# user request', () => {
     })
   })
 
-  context('# subscribing', () => {
+  context('# GET /users/subscribing', () => {
     before(async () => {
       this.ensureAuthenticated = sinon.stub(
         helpers, 'ensureAuthenticated'
@@ -103,7 +135,6 @@ describe('# user request', () => {
         .set('Accept', 'application/json')
         .expect(200)
         .end((err, res) => {
-          console.log(res.text)
           if (err) return done(err)
           res.text.should.include('取消訂閱')
           done()
@@ -119,7 +150,7 @@ describe('# user request', () => {
     })
   })
 
-  context('# cancel', () => {
+  context('# GET /users/:id/cancel', () => {
     before(async () => {
       this.ensureAuthenticated = sinon.stub(
         helpers, 'ensureAuthenticated'

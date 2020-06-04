@@ -15,7 +15,7 @@
   </div>
   <div class="col-md-6 col-12" style="margin: 0 auto;">
     <h1>個人資料</h1>
-    <form class="form-put-profile" action="/users/profile?_method=PUT" method="POST">
+    <form class="form-put-profile" action="/users/{{user.id}}/profile" method="POST">
       <div class="form-label-group my-3">
         <label>會員姓名 <span>*</span></label>
         <input type="text" name="name" class="form-control customer" value="{{user.name}}" required>

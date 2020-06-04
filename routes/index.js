@@ -35,7 +35,7 @@ module.exports = (app, passport) => {
 
   // User
   app.get("/users/:id/profile", authenticated, userController.getProfile)
-  app.put("/users/profile", authenticated, userController.putProfile)
+  app.post("/users/:id/profile", authenticated, userController.putProfile)
   app.get("/users/orders", authenticated, userController.getOrders)
   app.get("/users/subscribing", authenticated, userController.getSubscribing)
   app.get("/users/:id/cancel", authenticated, userController.getCancel)
