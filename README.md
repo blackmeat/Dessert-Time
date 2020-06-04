@@ -2,6 +2,8 @@
 本專案使用Node.js + Express + MYSQL並部署至Heroku上。
 ## 專案發想
 當初覺得訂閱制的服務很有趣，就像KKBOX、Netflix每個月自動從帳戶扣款就可以使用服務，於是就想實作在自己的網站上看看。
+## 專案網址
+https://dessert-time.herokuapp.com/home
 ## 功能說明
 ### Completed
 - 前台
