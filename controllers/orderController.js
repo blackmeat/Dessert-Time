@@ -29,7 +29,7 @@ const orderController = {
       amount: req.body.amount,
       shipping_status: req.body.shipping_status,
       payment_status: req.body.payment_status,
-      UserId: req.body.userId,
+      UserId: helpers.getUser(req).id,
       ProductId: req.body.productId
     }).then(order => {
       var mailOptions = {
@@ -47,7 +47,7 @@ const orderController = {
         }
       });
       CartItem
-        .destroy({ where: { CartId: req.session.cartId } })
+        .destroy({ where: { CartId: helpers.cartId(req) } })
         .then((cartitem) => {
           req.session.cartItem = null
           return res.redirect(`/order/${order.id}/checkout`)
@@ -58,7 +58,10 @@ const orderController = {
     Order
       .findByPk(req.params.id, { include: Product })
       .then(order => {
-        if (order.UserId !== req.user.id) {
+        if (!order) {
+          return res.redirect("/users/orders")
+        }
+        if (order.UserId !== helpers.getUser(req).id) {
           return res.redirect("/users/orders")
         }
         const tradeInfo = helpers.getTradeInfo(order.amount, order.Product.name, order.subscriber_email)
@@ -67,12 +70,10 @@ const orderController = {
             ...order,
             sn: tradeInfo.MerchantOrderNo
           }).then(order => {
-            res.render("checkout", { order, tradeInfo })
+            return res.render("checkout", { order, tradeInfo })
           })
-        } else {
-          res.render("checkout", { order, tradeInfo })
         }
-
+        return res.render("checkout", { order, tradeInfo })
       })
   },
   newebpayCallback: (req, res) => {

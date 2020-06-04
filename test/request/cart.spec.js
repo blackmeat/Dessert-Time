@@ -63,7 +63,7 @@ describe('# Cart Request', () => {
           if (err) done(err)
           db.Cart.findByPk(1).then((cart) => {
             db.CartItem.findOne({ where: { CartId: 1 } }).then((cartitem) => {
-              expect(cart).to.be.null
+              expect(cart).to.not.be.null
               expect(cartitem).to.not.be.null
               return done()
             })
