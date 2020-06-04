@@ -24,6 +24,7 @@ describe('# Order Request', () => {
     })
 
     it('show checkout page', (done) => {
+      this.timeout(10000)
       request(app)
         .get('/order/1/checkout')
         .set('Accept', 'application/json')
