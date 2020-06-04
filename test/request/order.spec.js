@@ -19,7 +19,9 @@ describe('# Order Request', () => {
       ).returns({ id: 1 })
       await db.User.create({})
       await db.Product.create({ name: '派對箱' })
-      await db.Order.create({ id: 1, sn: '12345', UserId: 1, ProductId: 1 })
+      await db.Order.create({
+        id: 1, subscriber_email: 'ABC@gmail.com', amount: 100, UserId: 1, ProductId: 1
+      })
       await db.Order.create({ id: 2, UserId: 2, ProductId: 1 })
     })
 
@@ -30,7 +32,7 @@ describe('# Order Request', () => {
         .expect(200)
         .end((err, res) => {
           if (err) return done(err)
-          res.text.should.include('12345')
+          res.text.should.include('ABC@gmail.com')
           return done()
         })
     })
