@@ -116,6 +116,10 @@ function getUser(req) {
   return req.user;
 }
 
+function cartId(req) {
+  return req.session.cartId
+}
+
 module.exports = {
   genDataChain,
   create_mpg_aes_encrypt,
@@ -124,4 +128,5 @@ module.exports = {
   cancelTradeInfo,
   ensureAuthenticated,
   getUser,
+  cartId,
 }

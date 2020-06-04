@@ -1,3 +1,4 @@
+const helpers = require("../helpers")
 const db = require("../models")
 const Cart = db.Cart
 const CartItem = db.CartItem
@@ -48,12 +49,12 @@ const cartController = {
     console.log("===== Session & User Information =====")
     console.log(req.session)
     console.log(req.user)
-    if (!req.session.cartId) {
+    if (!helpers.cartId(req)) {
       res.redirect("/products/subscribe")
     } else {
       CartItem
         .findOne({
-          where: { CartId: req.session.cartId },
+          where: { CartId: helpers.cartId(req) },
           include: [Product]
         })
         .then((item) => {
