@@ -1,19 +1,20 @@
 language: node_js
 node_js:
-    - "10"
-
+- '10'
 services:
-  - mysql
-
-# 設定參數(Travis CI 會按照參數分別執行)
+- mysql
 env:
-  - NODE_ENV=test
-
-# 在 install 前執行的指令
+- NODE_ENV=test
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS dessert_test default character set utf8mb4 collate utf8mb4_unicode_ci;'
-  - npm install sequelize-cli -g
-  
-# 在執行測試之前的指令
+- mysql -e 'CREATE DATABASE IF NOT EXISTS dessert_test default character set utf8mb4
+  collate utf8mb4_unicode_ci;'
+- npm install sequelize-cli -g
 before_script:
-  - sequelize db:migrate  
+- sequelize db:migrate
+deploy:
+  provider: heroku
+  api_key:
+    secure: sSUYjvrHsi57X/KPbER2ljLDcKtEVa9+O+WM/nyMXZkmiTLc5NHCpR7Z2S3/C54FlyE7FzjS30GyBaplHPQMuXFxmgC08ydN7DSeqZLSzmFJbfFsUZlyIyo4h5uhyuG0XyNB2L4p9prgUaNUj4fGl9t71WW2cmypPsH7pUb1VSRHIJ4T1JxQNFfzcZ0UAmI15X0eLVBodCseezuPI7BpuPkmkl6psA4Btij5w9g3bhCf1rcrlpX1gqlBCNMQijgqxKfKeuBSPtptoP1rA7l8j1KZB9Xvx8Fd8RGSCl9Gxv1MixRf0Rbz7SG8OReYMmgB15XZSGDR/Fru0MXEVIjfUN8y7kfORWGv2omHvaOVZ788NforNt29xZKttMfRIrRRMWEHFRHirfIDE8E/FOXHH6G1Tl9lPjCj6Lrv4jAP6OI/ik/eJYJwQinVXejT3nAw2JSp21UnptV6liirEi3no+cbRQmZ9YKLtlEqH5RViYzYf+8cegBeYzaxXcnaB3DxiRXiL2JaWf5hAB5xxoPktfRSpUJiw7y72uybgc7lXVD9M81YW7ATy0ao1B44uJzcsagOOyYsL/CXWkblkx/tNDNZGuEcEjsf0vwNRFhchkS5TzxqJV/fBA6Es2xMJNw1T6hJ2dqsnr+mZKf+XrRH2RDjtuUiQZq0zG/JTJrzo2c=
+  app: dessert-time
+  on:
+    repo: blackmeat/Dessert-Time
