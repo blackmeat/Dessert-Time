@@ -72,8 +72,9 @@ const orderController = {
           }).then(order => {
             return res.render("checkout", { order, tradeInfo })
           })
+        } else {
+          return res.render("checkout", { order, tradeInfo })
         }
-        return res.render("checkout", { order, tradeInfo })
       })
   },
   newebpayCallback: (req, res) => {
